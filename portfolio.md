@@ -1,7 +1,3 @@
-layout: page
-title: "Portfolio"
-permalink: /portfolio
-
 # Portfolio
 
 - Masters in Engineering at CentraleSupélec, University of Paris-Saclay, France. Specialisation on Theoretical Computer Science (2021-23)
