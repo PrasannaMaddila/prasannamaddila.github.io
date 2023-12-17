@@ -17,7 +17,6 @@ minima:
 # Build settings
 markdown: kramdown
 
-
 header_pages:
     - about.md
     - portfolio.md
