@@ -1,10 +1,7 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
 
-
 $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary', prop: 'Proposition');
-$text-var: unquote('{{ text }}');
-
 @each $env, $name in $thmenvs {
   .#{$env} {
     display: block;
@@ -14,17 +11,20 @@ $text-var: unquote('{{ text }}');
     padding: 1em;
     border-radius: 5px;
     content: "#{name}";
+    counter-reset: #{$env}-counter;
 
     &:before {
       content: inherit;
+      counter-increment: #{$env}-counter; 
       font-weight: bold;
       font-style: normal;
-      content: "#{$name} (#{$text-var}) ";
+      content: "#{$name} " counter(#{$env}-counter) ". ";
     }
 
     & ul {
       margin-bottom: 0;
       list-style-type: none;
+      list-style-position: inside;
     }
 
     & ul li {
