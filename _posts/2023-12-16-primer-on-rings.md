@@ -38,7 +38,7 @@ In particular, preserves the group structure since it (intuitively) translates t
 
 Funnily enough, both quotient-ing and homomorphisms are quite related, at least by the first Isomorphism Theorem.
 
-<div class="theorem" text='First Group Isomorphism Theorem'>
+<div class="thm" text='First Group Isomorphism Theorem'>
 Let $f: G \rightarrow H$ be a group homomorphism. Then, we have the following.
 
     1. Let the kernel of $f$ be the set of elements of $G$ mapped to the identity element of $H$, defined as $ker(f) = \{ g \in G : f(g) = e_H \}$. Then, $ker(f)$ is a normal subgroup of $G$.
