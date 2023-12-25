@@ -1,0 +1,42 @@
+// Placeholder to allow defining custom styles that override everything else.
+// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+
+//.theorem {
+//  display: block;
+//  font-style: italic;
+//  margin: 0 0 2em;
+//  content: "Theorem";
+//}
+//
+//.theorem:before {
+//  content: inherit;
+//  font-weight: bold;
+//  font-style: normal;
+//}
+//
+//.theorem[text]:before {
+//  content: "Theorem (#{text}) ";
+//}
+
+$thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary', prop: 'Proposition');
+@each $env, $name in $thmenvs {
+    .#{$env} {
+      display: block;
+      font-style: italic;
+      margin: 0 0 2em;
+      border: 1px solid #ccc;
+      padding: 1em;
+      border-radius: 5px;
+      content: "#{name}";
+    }
+
+    .#{$env}:before {
+      content: inherit;
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    .#{$env}[text]:before {
+      content: "#{name} (#{text}) ";
+    }
+}
