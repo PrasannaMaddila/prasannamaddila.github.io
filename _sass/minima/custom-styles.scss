@@ -15,10 +15,10 @@ $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary',
 
     &:before {
       content: inherit;
-      counter-increment: #{$env}-counter; 
+      counter-increment: #{$env}-counter;
       font-weight: bold;
       font-style: normal;
-      content: "#{$name} " counter(#{$env}-counter) ". ";
+      content: "#{$name} " counter(#{$env}-counter) ". ({{ text }})";
     }
 
     & ul {
