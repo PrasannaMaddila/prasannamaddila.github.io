@@ -29,8 +29,8 @@ This is precisely the structure we need to define a group quotient, which is a w
 
 <div class="defn">
 Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quotient $G/H$ as a new group where 
-    - $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements.
-    - The group operation $\circ'$ is defined as $(g_1H)(g_2H) := (g_1g_2)H$. 
+    1. $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements.
+    2. The group operation $\circ'$ is defined as $(g_1H)(g_2H) := (g_1g_2)H$. 
 </div>
 
 The other natural operation on groups is to define mappings between them. In particular, we are interested in mappings that preserve the group-iness i.e. mappings between sets are not all too interesting. This gives us a very natural definition.

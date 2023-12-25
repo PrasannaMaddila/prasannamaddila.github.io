@@ -14,16 +14,15 @@ $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary',
     counter-reset: #{$env}-counter;
 
     &:before {
-      content: inherit;
       counter-increment: #{$env}-counter;
       font-weight: bold;
       font-style: normal;
-      content: "#{$name} " counter(#{$env}-counter) ". ({{ text }})";
+      content: "#{$name} " counter(#{$env}-counter) ". ";
     }
 
     & ul {
       margin-bottom: 0;
-      list-style-type: none;
+      list-style-type: decimal;
       list-style-position: inside;
     }
 
