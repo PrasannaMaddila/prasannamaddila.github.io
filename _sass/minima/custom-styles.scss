@@ -20,6 +20,6 @@ $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary',
     }
 
     .#{$env}[text]:before {
-      content: "#{$name} (#{$text}) ";
+      content: "#{$name} (#{text}) ";
     }
 }
