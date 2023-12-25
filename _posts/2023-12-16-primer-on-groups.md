@@ -1,10 +1,6 @@
-This summarises the main definitions and theorems involving rings - at least the ones involved in an introductory class.
+This summarises a few definitions and theorems involving groups. The goal is to briefly introduce enough content, so that we can quickly move on to rings. Consider the basic definition of a group.
 
-## Groups
-
-Consider the basic definition of a group.
-
-<div class="defn" text='Group'>
+<div class="defn">
 A group is a set $G$ equipped with a binary mapping, $\circ$ such that it satisfies the following properties: 
 1. Closure : $\forall x, y \in G, xy \in G$ 
 2. Existence of Identity : $\exists e \in G$ such that $\forall x \in G, xe = ex = x$, and 3. Existence of Inverses : $\forall x \in G, \exists y \in G$ such that $xy = e$.
@@ -14,7 +10,7 @@ We can give simple examples for groups, such as the integers under addition $(\m
 
 Note that we leave out many common assumptions, such as commutativity. While the group $(\mathbb{Z}, +)$ is commutative, interesting non-commutative examples include the group of $n \times n$ matrices $M_{n\times n}(\mathbb{R})$, or the symmetry group on $n$ objects $S_n$. Interestingly, a subgroup is a subset $H \in G$ that is closed under $\circ$. We can also define more interesting operations on a group such as quotients, and define mappings between them. In particular, we have homomorphisms and isomorphisms.
 
-<div class="defn" text='Cosets'>
+<div class="defn">
 A (left) coset of a group $G$ is some subset $C \subset G$ such that $\forall a \in G, b \in C$ we have that $ab \in C$. Similarly, a right coset is defined a subset for which the rule is $ba \in C$.
 </div>
 
@@ -31,7 +27,7 @@ In particular, we require that $g_2^{-1}h_1g_2 \in H$ for all $g_2 \in G, h_1 \i
 
 This is precisely the structure we need to define a group quotient, which is a way of dividing a group. Intuitively, given a normal subgroup $H \subset G$, we can define a new group $G/H$ where every element is then taken 'modulo' $H$. Normalilty means that the natural group operation is well-defined, so we can justify the following definition.
 
-<div class="defn" text='Quotients'>
+<div class="defn">
 Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quotient $G/H$ as a new group where 
     - $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements.
     - The group operation $\circ'$ is defined as $(g_1H)(g_2H) := (g_1g_2)H$. 
@@ -39,7 +35,7 @@ Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quo
 
 The other natural operation on groups is to define mappings between them. In particular, we are interested in mappings that preserve the group-iness i.e. mappings between sets are not all too interesting. This gives us a very natural definition.
 
-<div class="defn" text='Group Homomorphism'>
+<div class="defn">
 A group homomorphism $f: (G,+) \rightarrow (H, \circ)$ is a mapping between two groups such that $f(a + b) = f(a) \circ f(b)$. 
 </div>
 
@@ -47,14 +43,10 @@ In particular, preserves the group structure since it (intuitively) translates t
 
 Funnily enough, both quotient-ing and homomorphisms are quite related, at least by the first Isomorphism Theorem.
 
-<div class="thm" text='First Group Isomorphism Theorem'>
+<div class="thm">
 Let $f: G \rightarrow H$ be a group homomorphism. Then, we have the following.
     1. Let the kernel of $f$ be the set of elements of $G$ mapped to the identity element of $H$, defined as $ker(f) = \{ g \in G : f(g) = e_H \}$. Then, $ker(f)$ is a normal subgroup of $G$.
     2. $G / ker(f) \cong Image(f)$. In particular, if $f$ is surjective, $Im(f) = H$ and we have $G\ker(f) \cong H$.
 
 In summary, a homomorphism induces a normal subgroup (the kernel of this homomorphism), and modulo this subgroup, we get back (more or less) $H$. To be specific, we get back something that is isomorphic to $H$.
 </div>
-
-## Rings
-
-Using all this structure, we can finally interest ourselves with Rings. In short, we basically want to see what happens when we add a second operation. This natural since, for example, the integers $\mathbb{Z}$ are typically associated with two operations $+$ and $\times$. Importantly, $(\mathbb{Z}, +)$ is a commutative group, while $(\mathbb{Z},\times)$ doesn't even have inverses ! However, these two operations are also compatible with each other, via the distribitivity axioms, $\forall a, b, c \in \mathbb{Z}, a(b+c) = ab + ac$ and $(a+b)c = ac + bc$. Somewhat interestingly, this is a common structure and to talk about all these examples at once, we consider a definition.

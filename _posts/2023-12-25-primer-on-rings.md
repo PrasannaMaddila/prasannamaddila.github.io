@@ -1,0 +1,3 @@
+## Rings
+
+Using all this structure, we can finally interest ourselves with Rings. In short, we basically want to see what happens when we add a second operation. This natural since, for example, the integers $\mathbb{Z}$ are typically associated with two operations $+$ and $\times$. Importantly, $(\mathbb{Z}, +)$ is a commutative group, while $(\mathbb{Z},\times)$ doesn't even have inverses ! However, these two operations are also compatible with each other, via the distribitivity axioms, $\forall a, b, c \in \mathbb{Z}, a(b+c) = ab + ac$ and $(a+b)c = ac + bc$. Somewhat interestingly, this is a common structure and to talk about all these examples at once, we consider a definition.
