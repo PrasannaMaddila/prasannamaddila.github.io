@@ -2,8 +2,10 @@ This summarises a few definitions and theorems involving groups. The goal is to 
 
 <div class="defn">
 A group is a set $G$ equipped with a binary mapping, $\circ$ such that it satisfies the following properties: 
-1. Closure : $\forall x, y \in G, xy \in G$ 
-2. Existence of Identity : $\exists e \in G$ such that $\forall x \in G, xe = ex = x$, and 3. Existence of Inverses : $\forall x \in G, \exists y \in G$ such that $xy = e$.
+<ol>
+<li> Closure : $\forall x, y \in G, xy \in G$ </li>
+<li> Existence of Identity : $\exists e \in G$ such that $\forall x \in G, xe = ex = x$, and 3. Existence of Inverses : $\forall x \in G, \exists y \in G$ such that $xy = e$.</li>
+</ol>
 </div>
 
 We can give simple examples for groups, such as the integers under addition $(\mathbb{Z}, +)$, or the modular integers $(\mathbb{Z}\_n, +)$ where the operation is $x \rightarrow x mod n$. A small note, we denote a group $(G, +)$ as simply $G$, whenever it is obvious.
@@ -29,8 +31,10 @@ This is precisely the structure we need to define a group quotient, which is a w
 
 <div class="defn">
 Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quotient $G/H$ as a new group where 
-    1. $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements.
-    2. The group operation $\circ'$ is defined as $(g_1H)(g_2H) := (g_1g_2)H$. 
+<ol>
+<li> $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements </li>
+<li> The group operation $\circ'$ is defined as $(g_1H)(g_2H) := (g_1g_2)H$. </li>
+</ol>
 </div>
 
 The other natural operation on groups is to define mappings between them. In particular, we are interested in mappings that preserve the group-iness i.e. mappings between sets are not all too interesting. This gives us a very natural definition.
@@ -45,8 +49,9 @@ Funnily enough, both quotient-ing and homomorphisms are quite related, at least 
 
 <div class="thm">
 Let $f: G \rightarrow H$ be a group homomorphism. Then, we have the following.
-    1. Let the kernel of $f$ be the set of elements of $G$ mapped to the identity element of $H$, defined as $ker(f) = \{ g \in G : f(g) = e_H \}$. Then, $ker(f)$ is a normal subgroup of $G$.
-    2. $G / ker(f) \cong Image(f)$. In particular, if $f$ is surjective, $Im(f) = H$ and we have $G\ker(f) \cong H$.
-
-In summary, a homomorphism induces a normal subgroup (the kernel of this homomorphism), and modulo this subgroup, we get back (more or less) $H$. To be specific, we get back something that is isomorphic to $H$.
+<ol>
+<li> Let the kernel of $f$ be the set of elements of $G$ mapped to the identity element of $H$, defined as $ker(f) = \{ g \in G : f(g) = e_H \}$. Then, $ker(f)$ is a normal subgroup of $G$. </li>
+<li> $G / ker(f) \cong Image(f)$. In particular, if $f$ is surjective, $Im(f) = H$ and we have $G\ker(f) \cong H$. </li>
+<ol>
 </div>
+In summary, a homomorphism induces a normal subgroup (the kernel of this homomorphism), and modulo this subgroup, we get back (more or less) $H$. To be specific, we get back something that is isomorphic to $H$.

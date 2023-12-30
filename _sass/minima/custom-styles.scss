@@ -11,14 +11,6 @@ $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary',
     padding: 1em;
     border-radius: 5px;
     content: "#{name}";
-    counter-reset: #{$env}-counter;
-
-    &:before {
-      counter-increment: #{$env}-counter;
-      font-weight: bold;
-      font-style: normal;
-      content: "#{$name} " counter(#{$env}-counter) ". ";
-    }
 
     & ul {
       margin-bottom: 0;
