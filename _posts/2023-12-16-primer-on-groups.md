@@ -1,16 +1,21 @@
 This summarises a few definitions and theorems involving groups. The goal is to briefly introduce enough content, so that we can quickly move on to rings. Consider the basic definition of a group.
 
+
+### Groups
 <div class="defn">
 A group is a set $G$ equipped with a binary mapping, $\circ$ such that it satisfies the following properties: 
 <ol>
 <li> Closure : $\forall x, y \in G, xy \in G$ </li>
-<li> Existence of Identity : $\exists e \in G$ such that $\forall x \in G, xe = ex = x$, and 3. Existence of Inverses : $\forall x \in G, \exists y \in G$ such that $xy = e$.</li>
+<li> Existence of Identity : $\exists e \in G$ such that $\forall x \in G, xe = ex = x$, and </li>
+<li> Existence of Inverses : $\forall x \in G, \exists y \in G$ such that $xy = e$.</li>
 </ol>
 </div>
 
-We can give simple examples for groups, such as the integers under addition $(\mathbb{Z}, +)$, or the modular integers $(\mathbb{Z}\_n, +)$ where the operation is $x \rightarrow x mod n$. A small note, we denote a group $(G, +)$ as simply $G$, whenever it is obvious.
+We can give simple examples for groups, such as the integers under addition $(\mathbb{Z}, +)$, or the modular integers $(\mathbb{Z}\_n, +)$ where the operation is $x \rightarrow x / mod / n$. A small note, we denote a group $(G, +)$ as simply $G$, whenever it is obvious.
 
 Note that we leave out many common assumptions, such as commutativity. While the group $(\mathbb{Z}, +)$ is commutative, interesting non-commutative examples include the group of $n \times n$ matrices $M_{n\times n}(\mathbb{R})$, or the symmetry group on $n$ objects $S_n$. Interestingly, a subgroup is a subset $H \in G$ that is closed under $\circ$. We can also define more interesting operations on a group such as quotients, and define mappings between them. In particular, we have homomorphisms and isomorphisms.
+
+### Cosets and Quotients
 
 <div class="defn">
 A (left) coset of a group $G$ is some subset $C \subset G$ such that $\forall a \in G, b \in C$ we have that $ab \in C$. Similarly, a right coset is defined a subset for which the rule is $ba \in C$.
@@ -37,6 +42,8 @@ Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quo
 </ol>
 </div>
 
+
+### Homomorphisms
 The other natural operation on groups is to define mappings between them. In particular, we are interested in mappings that preserve the group-iness i.e. mappings between sets are not all too interesting. This gives us a very natural definition.
 
 <div class="defn">
@@ -54,4 +61,5 @@ Let $f: G \rightarrow H$ be a group homomorphism. Then, we have the following.
 <li> $G / ker(f) \cong Image(f)$. In particular, if $f$ is surjective, $Im(f) = H$ and we have $G\ker(f) \cong H$. </li>
 <ol>
 </div>
+
 In summary, a homomorphism induces a normal subgroup (the kernel of this homomorphism), and modulo this subgroup, we get back (more or less) $H$. To be specific, we get back something that is isomorphic to $H$.

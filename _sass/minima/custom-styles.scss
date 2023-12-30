@@ -12,6 +12,12 @@ $thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary',
     border-radius: 5px;
     content: "#{name}";
 
+    &:before {
+      font-weight: bold;
+      font-style: normal;
+      content: "#{$name}. ";
+    }
+
     & ul {
       margin-bottom: 0;
       list-style-type: decimal;
