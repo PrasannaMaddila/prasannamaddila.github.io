@@ -2,7 +2,7 @@ This summarises a few definitions and theorems involving groups. The goal is to 
 
 
 ### Groups
-<div class="defn">
+<div class="defn" text="Groups">
 A group is a set $G$ equipped with a binary mapping, $\circ$ such that it satisfies the following properties: 
 <ol>
 <li> Closure : $\forall x, y \in G, xy \in G$ </li>
@@ -17,7 +17,7 @@ Note that we leave out many common assumptions, such as commutativity. While the
 
 ### Cosets and Quotients
 
-<div class="defn">
+<div class="defn" text="Cosets">
 A (left) coset of a group $G$ is some subset $C \subset G$ such that $\forall a \in G, b \in C$ we have that $ab \in C$. Similarly, a right coset is defined a subset for which the rule is $ba \in C$.
 </div>
 
@@ -34,7 +34,7 @@ In particular, we require that $g_2^{-1}h_1g_2 \in H$ for all $g_2 \in G, h_1 \i
 
 This is precisely the structure we need to define a group quotient, which is a way of dividing a group. Intuitively, given a normal subgroup $H \subset G$, we can define a new group $G/H$ where every element is then taken 'modulo' $H$. Normalilty means that the natural group operation is well-defined, so we can justify the following definition.
 
-<div class="defn">
+<div class="defn" text="Quotient Group">
 Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quotient $G/H$ as a new group where 
 <ol>
 <li> $G/H = \{ H, a_1 + H, a_2 + H, \cdots \}$ are the elements </li>
@@ -46,7 +46,7 @@ Given a group $G$ and a normal subgroup $H \in G$. Then, we define the group quo
 ### Homomorphisms
 The other natural operation on groups is to define mappings between them. In particular, we are interested in mappings that preserve the group-iness i.e. mappings between sets are not all too interesting. This gives us a very natural definition.
 
-<div class="defn">
+<div class="defn" text="Group Homomorphism">
 A group homomorphism $f: (G,+) \rightarrow (H, \circ)$ is a mapping between two groups such that $f(a + b) = f(a) \circ f(b)$. 
 </div>
 
@@ -54,12 +54,12 @@ In particular, preserves the group structure since it (intuitively) translates t
 
 Funnily enough, both quotient-ing and homomorphisms are quite related, at least by the first Isomorphism Theorem.
 
-<div class="thm">
+<div class="thm" text="First Isomorphism Theorem">
 Let $f: G \rightarrow H$ be a group homomorphism. Then, we have the following.
 <ol>
 <li> Let the kernel of $f$ be the set of elements of $G$ mapped to the identity element of $H$, defined as $ker(f) = \{ g \in G : f(g) = e_H \}$. Then, $ker(f)$ is a normal subgroup of $G$. </li>
 <li> $G / ker(f) \cong Image(f)$. In particular, if $f$ is surjective, $Im(f) = H$ and we have $G\ker(f) \cong H$. </li>
-<ol>
+</ol>
 </div>
 
 In summary, a homomorphism induces a normal subgroup (the kernel of this homomorphism), and modulo this subgroup, we get back (more or less) $H$. To be specific, we get back something that is isomorphic to $H$.

@@ -1,32 +1,59 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+// base environment to define the style of a math env. This italicises 
+// all text, draws a box around the environment, and defines the list styles.
+.base-env {
+  // generic properties 
+  display: block;
+  font-style: italic;
+  margin: 0 0 2em;
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 5px;
+  
+  &:before {
+    font-weight: bold;
+    font-style: normal;
+  } // end prefix 
+  
+  &[text]:before {
+    font-weight: bold;
+    font-style: normal;
+  }// end custom text prefix
+  
+  & ul {
+    margin-bottom: 0;
+    list-style-type: decimal;
+    list-style-position: inside;
+  } // end list-env
+  
+  & ul li {
+    margin-bottom: .5em;
+    padding-left: 20px;
+  } // end list-element
+}
 
-$thmenvs: (defn: 'Definition', thm: 'Theorem', lemma: 'Lemma', cor: 'Corollary', prop: 'Proposition');
-@each $env, $name in $thmenvs {
-  .#{$env} {
-    display: block;
-    font-style: italic;
-    margin: 0 0 2em;
-    border: 1px solid #ccc;
-    padding: 1em;
-    border-radius: 5px;
-    content: "#{name}";
+// define the environments which extend .base-env
+$names: (
+  defn: 'Definition', 
+  thm: 'Theorem', 
+  lemma: 'Lemma', 
+  cor: 'Corollary', 
+  prop: 'Proposition'
+);
 
-    &:before {
-      font-weight: bold;
-      font-style: normal;
-      content: "#{$name}. ";
+// use inheritance and define custom aspects of each name
+// this includes specific counter for each env.
+@each $env, $name in $names{
+  .#{$env}{
+    @extend .base-env;
+    counter-increment: #{$env}-counter;
+  
+    &:before{
+      content: "#{$name} " counter(#{$env}-counter) ".";
     }
-
-    & ul {
-      margin-bottom: 0;
-      list-style-type: decimal;
-      list-style-position: inside;
+    &[text]:before{
+      content: "#{$name} " counter(#{$env}-counter) " (" attr(text) ").";
     }
-
-    & ul li {
-      margin-bottom: .5em;
-      padding-left: 20px;
-    }
-  }
+   }
 }
