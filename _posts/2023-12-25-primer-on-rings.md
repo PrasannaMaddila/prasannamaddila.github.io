@@ -12,10 +12,10 @@ This is the canconical ring in some sense since the integers $\mathbb{Z}$ are ty
 
 ## Square Matrices
 
-In this case, we consider the space of $n \times n$ matrices over $\mathbf{R}$, for instance. We denote this space as $M_{n\times n(\mathbf{R}}). Adding matrices is simply defined as 
+In this case, we consider the space of $n \times n$ matrices over $\mathbf{R}$, for instance. We denote this space as $M_{n\times n(\mathbb{R}})$. Adding matrices is simply defined as 
 $$
 \begin{align}
-    A + B &= \left[ a_{ij} \right]_{n \times n} + \left[ b_{ij} \right]_{n \times n} =\left[ a_{ij} + b_{ij} \right]_{n \times n} 
+    A + B &= [ a_{ij} ]_{n \times n} + [ b_{ij} ]_{n \times n} =\left[ a_{ij} + b_{ij} \right]_{n \times n} 
 \end{align}
 $$
 
