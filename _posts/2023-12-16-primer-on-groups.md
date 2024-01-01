@@ -1,5 +1,10 @@
-This summarises a few definitions and theorems involving groups. The goal is to briefly introduce enough content, so that we can quickly move on to rings. Consider the basic definition of a group.
+---
+layout: post
+title: "Primer on Groups"
+categories: math
+---
 
+This summarises a few definitions and theorems involving groups. The goal is to briefly introduce enough content, so that we can quickly move on to rings. Consider the basic definition of a group.
 
 ### Groups
 <div class="defn" text="Groups">
