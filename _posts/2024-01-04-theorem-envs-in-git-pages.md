@@ -23,7 +23,7 @@ This is a great theorem.
 
 ## SCSS and the Minima theme
 
-Now, GitHub Pages allows us to provide SCSS schema which will be used to render our Markdown posts into HTML. The Minima theme that I use provides a neat little hooks where we can place our own custom SCSS. This is in the `_sass/minima/custom-styles.scss` file, so if you don't have it already, create it now.
+Now, GitHub Pages allows us to provide SCSS schema which will be used to render our Markdown posts into HTML. The Minima theme that I use provides a neat little hook where we can place our own custom SCSS. This is the `_sass/minima/custom-styles.scss` file, so if you don't have it already, create it now.
 
 ## Base Environment 
 
@@ -78,25 +78,27 @@ Lastly, we need to add list support. I haven't yet found a way to transform Mark
     padding-left: 20px;
   } // end list-element
 
-  ...
+} // end base-env
 ```
 
-## Specialised environments
+Now, we're done with the definition of our base environment.
 
-Now, we specialise the base environment to all the environments that we actually want. For now, we will include definitions and theorems, but feel free to add the ones you like. We store all these in the `names` dictionary.
+## Specialised environments and SCSS
+
+We can use the base environment to define all the environments that we actually want. We will include definitions and theorems here, but feel free to add the ones you like. These are all stored in the `names` dictionary. (This is all outside `base-env`!)
 
 ```scss
-// define the environments which extend .base-env
 $names: (
   thm: 'Theorem', 
   defn: 'Definition', 
-  ...
 )
 ```
 
-Now, we iterate over each of these. Note that to have numbered blocks, each environment needs to have its own counter, which we will dynamically define. We iterate over each of the `env`-`name` pairs in the `names` variable to do this.
+Furthermore, to have numbered blocks, each environment needs to have its own counter. We iterate over each of the `env`-`name` pairs in the `names` variable to define them dynamically. To do this, we exploit SCSS's interpolation capabilities. 
 
-For each `env`, we can define its individual counter `#{$env}-counter`. Here, `#{$env}` will substitute the value of `env` right in the variable name. So, the resulting counter will be named `thm-counter`, for example. Using this counter, we can define the numbered prefix, and another when text is specified, as follows.
+SCSS has a neat trick where we can substitute the name of our variable directly into the CSS file that it compiles into. Suppose we have a variable `var` declared as `$var: 'Variable'`. Then, `$var` will fetch its contents but `#{$var}-new` will declare a new variable called `Variable-counter`. We're going to abuse this trick :) 
+
+For each `env`, we declare first a new block environment called `#{$env}`. Then, we can define its individual counter `#{$env}-counter`. For example, we first declare the `thm` environment, with its own counter `thm-counter`. Using this counter, we can define the numbered prefixes, with and without supplementary comments/text.
 
 ```scss
 @each $env, $name in $names{
@@ -114,6 +116,7 @@ For each `env`, we can define its individual counter `#{$env}-counter`. Here, `#
 }
 ```
 
+Don't forget to extend the base environment when defining the new ones!
 
 ## Conclusions 
 
@@ -137,3 +140,26 @@ The following are equivalent.
 <li> Not False </li>
 </ol>
 </div>
+
+Alternatively, 
+```html
+<div class="defn" text="First Definition">
+A prime number is a number with only 2 factors, 1 and itself. For example,
+<ol>
+<li> 2 is a prime number. </li>
+<li> 33 is not a prime number, since it has the factors 1, 3, 11, 33. </li>
+</ol>
+</div>
+```
+
+which will be rendered as
+
+<div class="defn" text="First Definition">
+A prime number is a number with only 2 factors, 1 and itself. For example,
+<ol>
+<li> 2 is a prime number. </li>
+<li> 33 is not a prime number, since it has the factors 1, 3, 11, 33. </li>
+</ol>
+</div>
+
+Happy hacking!
