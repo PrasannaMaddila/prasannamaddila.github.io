@@ -24,7 +24,7 @@ Naming the package manager `pkg` is comically good - if I want to install a pack
 
 ## Drawbacks
 
-Of course, working on essentially a niche operating system definitely has drawbacks. For instance, hardware support, especially for Wi-Fi is bad. I tried a TP-Link TL-WN881ND, which had spotty connection at best. Switching to a card with an Intel chipset was almost plug and play. Following the [FreeBSD handbook](https://docs.freebsd.org/en/books/handbook/network/) to configure my interface and hten connect was seamless. Lesson learned - when it works, it _really_ works. When it doesn't, Prometheus.
+Of course, working on essentially a niche operating system definitely has drawbacks. For instance, hardware support, especially for Wi-Fi is bad. I tried a TP-Link TL-WN881ND, which had spotty connection at best. Switching to a card with an Intel chipset was almost plug and play. Following the [FreeBSD handbook](https://docs.freebsd.org/en/books/handbook/network/) to configure my interface and hten connect was seamless. Lesson learned - when it works, it _really_ works. When it doesn't, it will be noticeable.
 
 There's also a problem I have with Python packages - not all of them provide wheels for BSDs (I'm not counting macOS for now). For example, a library that I use, [Ray](https://github.com/ray-project/ray/tree/master) (or more specifically, RLlib), can't be installed with a `pip install` and a smile. This gives me a few options, which I will need to thoroughly explore.
 
