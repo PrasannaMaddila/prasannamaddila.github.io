@@ -1,4 +1,7 @@
-# About Me
+---
+layout: post
+title: "About Me"
+---
 
 I'm Prasanna, a doctoral student at the University of Toulouse III. My subject is on developing reinforcement learning approaches to multi-agent games. In particular, I focus on a class of multi-agent, partially observable stochastic games with both cooperative and competitive behaviour.
 
