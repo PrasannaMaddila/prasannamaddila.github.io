@@ -8,17 +8,18 @@ Hello ! Welcome to the repository where I store my blog. This is for all things 
 
 # News
 
-- [JFSMA 2024](https://easychair.org/cfp/jfsma2024)[Paper](https://hal.science/hal-04699116)  I'll be attending the 32nd (-ième?) Journées Francophones sur les Systèmes Multi-Agents at Cargèse, Corsica this year. Find me there between 5-9 November !
-- [EWRL 2024](https://ewrl.wordpress.com/ewrl17-2024/)[Paper](https://openreview.net/forum?id=JSWRnHC93W&noteId=JSWRnHC93W) Presenting a poster at the 17th European Workshop on Reinforcement Learning, held at Toulouse this year!
-- [WLiG 2024](https://indico.math.cnrs.fr/event/10543/overview)[Paper](https://hal.science/hal-04701220) Attended the Workshop on Learning in Games held at the IMT, Toulouse, and presented a poster.
-- [ROADEF 2024](https://roadef2024.sciencesconf.org/?lang=fr)[Paper](https://roadef2024.sciencesconf.org/511462) Presented the Anti-Poaching Game at ROADEF 2024, held in Amiens. 
+- ([JFSMA 2024](https://easychair.org/cfp/jfsma2024))([Paper](https://hal.science/hal-04699116))  I'll be attending the 32nd (-ième?) Journées Francophones sur les Systèmes Multi-Agents at Cargèse, Corsica this year. Find me there between 5-9 November !
+- ([EWRL 2024](https://ewrl.wordpress.com/ewrl17-2024/))([Paper](https://openreview.net/forum?id=JSWRnHC93W&noteId=JSWRnHC93W)) Presenting a poster at the 17th European Workshop on Reinforcement Learning, held at Toulouse this year!
+- ([WLiG 2024](https://indico.math.cnrs.fr/event/10543/overview))([Paper](https://hal.science/hal-04701220)) Attended the Workshop on Learning in Games held at the IMT, Toulouse, and presented a poster.
+- ([ROADEF 2024](https://roadef2024.sciencesconf.org/?lang=fr))([Paper](https://roadef2024.sciencesconf.org/511462)) Presented the Anti-Poaching Game at ROADEF 2024, held in Amiens. 
 
 
 # Posts 
+
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.permalink }}">{{ post.title }}</a>
+      <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>

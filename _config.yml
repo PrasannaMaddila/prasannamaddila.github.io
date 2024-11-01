@@ -3,6 +3,7 @@ title: Between Code and Math
 author:
   name: Prasanna Maddila
 description: "Blog on things I find interesting about code and math."
+url: https://prasannamaddila.github.io/
 
 # Build settings
 remote_theme: jekyll/minima@3cdd14d
