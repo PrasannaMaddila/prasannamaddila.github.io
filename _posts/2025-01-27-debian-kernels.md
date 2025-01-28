@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Compiling custom kernels for Debian"
+title: "Compiling Custom Kernels for Debian"
 categories: code
 ---
 
@@ -54,7 +54,7 @@ The classical way (as far as I've made out) is to use the `menuconfig` target. T
 
 In order to get a lean, mean kernel with nothing more than needed, I used the `localmodconfig` target. This will try to build only the modules that are currently loaded into your computer - definitely an improvement over manually searching for each installed module. It will prompt you for several optional modules just to be sure, but sticking to the defaults seemed to work just fine for me. 
 
-<div class="Remark" text="Debian Specifics">
+<div class="remark" text="Debian Specifics">
 Since we're on Debian, the OS expects that all modules are signed, or that module signing is explicitly disabled. This is a great security feature, but when compiling my kernel, I did not be sign them. Instead, I disabled module signing using the following command : (after getting a configuration file and before starting the compile process)
 
 ```bash
@@ -91,13 +91,15 @@ Upgrading the kernel meant that I also had to upgrade the firmware of my Wi-Fi d
 ...
 ```
 
-Once I knew which file to go for, I basically had to download the firmware (preferably from [Debian sources](https://packages.debian.org/trixie/firmware-iwlwifi), and copy/move the `iwlwifi-cc-a0-88.ucode` file to `/usr/lib/firmware`. This fixed my problem, and hopefully, you shouldn't have something more complicated than this to do.
+Once I knew which file to go for, I basically had to download the firmware (preferably from [Debian sources](https://packages.debian.org/trixie/firmware-iwlwifi)), and copy/move the `iwlwifi-cc-a0-88.ucode` file to `/usr/lib/firmware`. This fixed my problem, and hopefully, you shouldn't have something more complicated than this to do.
 
 
 # Conclusions
 
 So, the results of this experiment:
 
-1) A brand-new, shiny _stable_ kernel on a Debian system.
-2) `dmesg` is a friend.
-3) Knowing where the system firmware is stored ([_insert evil smile_](https://tenor.com/view/evil-smile-gif-9846496955827135924)).
+1. A brand-new, shiny _stable_ kernel on a Debian system.
+2. `dmesg` is a friend.
+3. Knowing where the system firmware is stored ([_insert evil smile_](https://tenor.com/view/evil-smile-gif-9846496955827135924)).
+
+A nicer, Debian specific guide was listed [here](https://debian-handbook.info/browse/stable/sect.kernel-compilation.html). I'll look at it later.
