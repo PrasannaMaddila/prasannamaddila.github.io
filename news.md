@@ -1,4 +1,7 @@
-# News
+---
+layout: post
+title: "News"
+---
 
 I try to organise personal news by theme so it's easier to walk through. Better organisation suggestions are always welcome (and might even be necessary) !
 
