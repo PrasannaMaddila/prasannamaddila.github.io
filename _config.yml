@@ -19,4 +19,4 @@ markdown: kramdown
 
 header_pages:
     - about.md
-    - portfolio.md
+    - news.md
