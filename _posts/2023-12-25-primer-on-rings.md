@@ -8,7 +8,7 @@ This article will motivate the example of a ring, a common algebraic structure, 
 
 ## Integers
 
-This is the canconical ring in some sense since the integers $\mathbb{Z}$ are typically associated with two operations $+$ and $\times$. In addition, $(\mathbb{Z}, +)$ is a commutative group, while $(\mathbb{Z},\times)$ doesn't even have inverses! However, these two operations are also compatible with each other via the distribitivity axioms, $\forall a, b, c \in \mathbb{Z}, a(b+c) = ab + ac$ and $(a+b)c = ac + bc$. Somewhat interestingly, this is a common structure. 
+This is the canonical ring in some sense since the integers $\mathbb{Z}$ are typically associated with two operations $+$ and $\times$. In addition, $(\mathbb{Z}, +)$ is a commutative group, while $(\mathbb{Z},\times)$ doesn't even have inverses! However, these two operations are also compatible with each other via the distribitivity axioms, $\forall a, b, c \in \mathbb{Z}, a(b+c) = ab + ac$ and $(a+b)c = ac + bc$. Somewhat interestingly, this is a common structure. 
 
 ## Square Matrices
 
@@ -33,16 +33,16 @@ $$
 
 where we used the associativity of $\mathbb{R}$ and the definition of the operation. Similarly, we can show that the zero matrix $\mathbf{0}$ is the additive identity, and for each matrix $A$, $-A$ is the additive inverse. It is also trivially commutative under addition as well. 
 
-For the multiplication operation, we consider regular matrix multiplication. It admits an multiplicative identity $\mathbf{I}$, but we cannot guarantee that each matrix has an inverse. We can quickly show distributivity in Einstein notation as
+For the multiplication operation, we consider regular matrix multiplication. It admits an multiplicative identity $\mathbf{I}$, but we cannot guarantee that each matrix has an inverse. We can quickly show distributivity as
 $$
 \begin{align}
-D = A(B+C) &\implies d_{ik} = a_{ij} (b_{jk} + c_{jk}) = a_{ij}b_{jk} + a_{ij}c_{jk} = AB + AC
+A(B+C) = \sum_{i,j,k} a_{ij} (b_{jk} + c_{jk}) = \sum_{i,j,k}a_{ij}b_{jk} + \sum_{i,j,k}a_{ij}c_{jk} = AB + AC
 \end{align}
 $$
 
 as desired. Note however that this does not really tell us anything interesting, and proofs viewing matrices as linear transformations might be worth a look.
 
-In short, the space of square matrices is a ring under element-wise addition and matrix multiplication.
+In short, the space of square matrices is a ring under element-wise addition and matrix multiplication. This is not a commutative ring, however, since the multiplication operation isn't commutative. Note however that the addition operation is always required to be commutative; in this case, it's inherited from the abelian-ness of addition over the reals (or whichever base field we choose).
 
 
 ## Continuous Functions
@@ -59,7 +59,7 @@ To talk about all these examples at once, we consider a definition.
     <ol>
         <li> $(R, +)$ is a commutative group. </li>
         <li> $(R,\times)$ is associative i.e. $a(bc)=(ab)c=abc$, $\forall a,b,c \in R$. </li>
-        <li> $+$ and $\times$ distribute over each other i.e. $a(b+c) = ab + ac$ and $(a+b)c = ac + bc$, for all $a,b,c \in R$.</li>
+        <li> $+$ distributes over $\times$ i.e. $a(b+c) = ab + ac$ and $(a+b)c = ac + bc$, for all $a,b,c \in R$.</li>
     </ol>
 </div>
 
