@@ -7,6 +7,8 @@ I try to organise personal news by theme so it's easier to walk through. Better 
 
 ## Papers and Publications
 
+Papers from my PhD work - this is mostly around Algorithmic Game Theory (Nash Equilibrium Computatation) and MARL for the moment.
+
 ### Multi-Adversarial Team Games 
 
 Multi-Adversarial Team Gamea model the team vs. independent adversary dynamic that is central to APE. We model this first as a normal form game, where we show that equilibria in this game are poly-time approximable.
