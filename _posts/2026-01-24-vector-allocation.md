@@ -9,7 +9,7 @@ This entire post comes from my love-hate relationship with C++. I love Stepanov'
 
 # Step 0. Setup
 
-I'm using [Google Benchmark](https://github.com/google/benchmark) to create micro-benchmarks for this post. All code is available at : [MathTest.cpp](https://github.com/PrasannaMaddila/math-test-cpp/tree/main). All of these numbers are on my local machine, so your mileage will definitely vary.
+I'm using [Google Benchmark](https://github.com/google/benchmark) to create micro-benchmarks for this post, and am using Clang v17.0.0. All code is available at : [MathTest.cpp](https://github.com/PrasannaMaddila/math-test-cpp/tree/main). All of these numbers are on my local machine, so your mileage will definitely vary.
 
 I'm also setting global constants for the array sizes. These are the size of the matrices I want to create.
 
@@ -118,8 +118,8 @@ That puts us right back at array speeds, if not a little better. Since our memor
 ---------------------------------------------------------------------------------------
 Benchmark                                             Time             CPU   Iterations
 ---------------------------------------------------------------------------------------
-Vector_1D_ReserveIndexing                         0.202 ms        0.202 ms         3415
-Vector_1D_ReserveIndexing_BoundsCheck             0.150 ms        0.150 ms         4661
+Vector_1D_ReserveIndexing                         0.202 ms        0.202 ms         3447
+Vector_1D_ReserveIndexing_BoundsCheck             0.137 ms        0.137 ms         5166
 ```
 
 The last thing I tried was noticing that we always calculate `i * col_size` repeatedly in the hot-loop. If the compiler doesn't optimise that away, then we might have one last low-hanging fruit to reap.
