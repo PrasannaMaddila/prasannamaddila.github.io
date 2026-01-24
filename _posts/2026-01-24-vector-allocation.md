@@ -4,6 +4,7 @@ title: "Allocating 2D Vectors in C++"
 categories: code
 ---
 
+
 This entire post comes from my love-hate relationship with C++. I love Stepanov's idea for C++ and so, C++11, while obviously flawed, is my favorite version of the language. Today, I just want to play around with the eternal `std::vector`, and understand the real tradeoffs with `std::array`. Mind you, I am not going to play with C-style arrays for obvious reasons. In particular, I want to initialise a 2D `std::vector`, preferably of size $1000 \times 1000$.
 
 # Step 0. Setup
@@ -22,16 +23,15 @@ const int col_size = 1000;
 The simplest way to create a 2D vector is to create a vector of vectors. For example, we create a `vector<vector<double>>` object here called `vector_nres`, and use a `vector<double>` to store the row as we initialise it. This row is then pushed back onto `vector_nres`, which means a copy is created and pushed back. We then clear the row object (which resets the elements, but keeps the memory), and do this all over again.
 
 ```c++
-    std::vector< std::vector<double> > vector_nres;
-    std::vector<double> row(row_size);
+std::vector< std::vector<double> > vector_nres;
+std::vector<double> row(row_size);
 
-    for (int i = 0; i < row_size; i++) {
-        row.clear() ; // reset the elements
-        for (int j = 0; j < col_size; j++){
-            row.push_back(1.0);
-        }
-        vector_nres.push_back(row);
+for (int i = 0; i < row_size; i++) {
+    row.clear() ; // reset the elements
+    for (int j = 0; j < col_size; j++){
+        row.push_back(1.0);
     }
+    vector_nres.push_back(row);
 }
 ```
 
@@ -44,12 +44,11 @@ This has what we call in the business ["amortized constant"](https://en.cpprefer
 Theory aside, we didn't do too badly.
 
 ```bash
-$ ./bin/allocation_test --benchmark_unit_time=ms
-------------------------------------------------------------------------
-Benchmark                              Time             CPU   Iterations
-------------------------------------------------------------------------
-Vector_NoReserve                    1.98 ms         1.98 ms          431
-Vector_Reserve                      1.98 ms         1.98 ms          434
+---------------------------------------------------------------------------------------
+Benchmark                                             Time             CPU   Iterations
+---------------------------------------------------------------------------------------
+Vector_NoReserve                                   2.02 ms         2.02 ms          342
+Vector_Reserve                                     2.05 ms         2.04 ms          439
 ```
 
 
@@ -58,33 +57,33 @@ Vector_Reserve                      1.98 ms         1.98 ms          434
 An knee-jerk reaction to have to the previous code is to use `std::array`.
 
 ```c++
-    std::array< std::array<double, col_size>, row_size> arr;
+std::array< std::array<double, col_size>, row_size> arr;
 
-    for (int i = 0; i < row_size; i++)
-      for (int j = 0; j < col_size; j++)
-        arr[i][j] = 1.0; 
-    }
+for (int i = 0; i < row_size; i++) {
+  for (int j = 0; j < col_size; j++)
+    arr[i][j] = 1.0; 
+}
 ```
 
 On the other hand, we can try the infamous 1D-buffer-is-2D-buffer trick. So, we allocate one huge buffer of doubles, with size `row_size * col_size` and index it outselves.
 
 ```c++
-    std::array< double, row_size * col_size > arr_1d;
-    
-    for (int i = 0; i < row_size; i++)
-      for (int j = 0; j < col_size; j++)
-        arr_1d[i*col_size + j] = 1.0; 
+std::array< double, row_size * col_size > arr_1d;
+
+for (int i = 0; i < row_size; i++) {
+  for (int j = 0; j < col_size; j++)
+    arr_1d[i*col_size + j] = 1.0; 
+}
 ```
 
 This gives us a nearly 10x performance boost ! Note that we can consider the distance between their times basically noise. The compiler writers have put in a lot of work to make that happen, I'll bet.
 
 ```bash
-$ ./bin/allocation_test --benchmark_unit_time=ms --benchmark_filter=Array
------------------------------------------------------
-Benchmark           Time             CPU   Iterations
------------------------------------------------------
-Array           0.220 ms        0.220 ms         3160
-Array_1D        0.221 ms        0.221 ms         3177
+---------------------------------------------------------------------------------------
+Benchmark                                             Time             CPU   Iterations
+---------------------------------------------------------------------------------------
+Array                                             0.220 ms        0.220 ms         3182
+Array_1D                                          0.221 ms        0.221 ms         3145
 ```
 
 So, we have some catching up to do ! On the other hand, we can't use arrays willy-nilly here. The difference is that arrays are statically allocated objects on the stack, not the heap. That means that their size must be known at compile time. Alternatively stated, we cannot use arrays that are bigger than the program stack :( - for example, setting row and column sizes to $5000$ gives me the classic `Segmentation fault: core dumped` error that should be intimate knowledge to all of us here. 
@@ -94,23 +93,23 @@ So, we have some catching up to do ! On the other hand, we can't use arrays will
 I'm not pretending. Other than the stack/heap difference, vectors are contiguous, just like arrays are. So, we can try the infamous 1D-buffer-is-2D-buffer trick one more time, only this time, we're using vectors.
 
 ```bash
-    std::vector< double > vector_1d(row_size * col_size);
+std::vector< double > vector_1d(row_size * col_size);
 
-    for (int i = 0; i < row_size; i++) {
-      for (int j = 0; j < col_size; j++)
-        vector_1d[i * col_size + j] = 1.0;
-    }
+for (int i = 0; i < row_size; i++) {
+  for (int j = 0; j < col_size; j++)
+    vector_1d[i * col_size + j] = 1.0;
+}
 ```
 
 On the other hand, there's also the wonderful `.at` function for C++ vectors that performs some bounds checking before allowing us to modify or see anything. So, that gives us
 
 ```bash
-    std::vector< double > vector_1d(row_size * col_size);
+std::vector< double > vector_1d(row_size * col_size);
 
-    for (int i = 0; i < row_size; i++) {
-      for (int j = 0; j < col_size; j++)
-        vector_1d.at(i * col_size + j) = 1.0;
-    }
+for (int i = 0; i < row_size; i++) {
+  for (int j = 0; j < col_size; j++)
+    vector_1d.at(i * col_size + j) = 1.0;
+}
 ```
 
 That puts us right back at array speeds, if not a little better. Since our memory access in this example is best friends with the cache and the branch predictor, I suspect we get some sort of bonus.
@@ -126,42 +125,42 @@ Vector_1D_ReserveIndexing_BoundsCheck             0.150 ms        0.150 ms      
 The last thing I tried was noticing that we always calculate `i * col_size` repeatedly in the hot-loop. If the compiler doesn't optimise that away, then we might have one last low-hanging fruit to reap.
 
 ```c++
-    std::vector< double > vector_1d(row_size * col_size);
+std::vector< double > vector_1d(row_size * col_size);
 
-    for (int i = 0; i < row_size; i++) {
-      int offset = i * col_size;
-      for (int j = 0; j < col_size; j++)
-        vector_1d[offset + j] = 1.0;
-    }
+for (int i = 0; i < row_size; i++) {
+  int offset = i * col_size;
+  for (int j = 0; j < col_size; j++)
+    vector_1d[offset + j] = 1.0;
+}
 ```
 
-This puts us at around the same point, suggesting that the compiler is smart enough to do this for us.
+This pushes our code to execute even faster, to >5000 iterations! 
 
 ```bash
 ---------------------------------------------------------------------------------------
 Benchmark                                             Time             CPU   Iterations
 ---------------------------------------------------------------------------------------
-Vector_1D_ReserveIndexing_Offset                  0.202 ms        0.202 ms         3434
-Vector_1D_ReserveIndexing_Offset_BoundsCheck      0.164 ms        0.164 ms         4279
-Array_1D_Offset                                   0.221 ms        0.221 ms         3145
+Vector_1D_ReserveIndexing_Offset                  0.202 ms        0.202 ms         3461
+Vector_1D_ReserveIndexing_Offset_BoundsCheck      0.135 ms        0.135 ms         5207
+Array_1D_Offset                                   0.221 ms        0.221 ms         3163
 ```
 
 # Step 4. Use the STL !
 
-Since we're already here, we can use nice things™️ like `std::fill`, as follows:
+Since we're already here, we can use nice things™️ like `std::fill`, to leverage what the STL has already done for us. This should be as clear as we can get with our intentions, which should (hopefully) allow the compiler to optimise even more. 
 
 ```c++
-  std::vector< double > vector_1d(row_size * col_size);
-  std::fill(vector_1d.begin(), vector_1d.end(), 1.0);
+std::vector< double > vector_1d(row_size * col_size);
+std::fill(vector_1d.begin(), vector_1d.end(), 1.0);
 ```
 
-This gives us respectable times, nothing too shabby. But our champion is still the bounds-checked 1D-buffer implementation. I'm not too sure why this isn't as fast as the other one - it probably has to do with the dereferencing of the iterator at each step, as opposed to direct indices into memory.
+And does it deliver ! A marginal improvement over our handwritten champion (1d vector + pre-reserve + offset variable + bounds-checked accesses), and a much cleaner implementation too - 1 single line.
 
 ```bash
----------------------------------------------------------
-Benchmark               Time             CPU   Iterations
----------------------------------------------------------
-Vector_1D_Fill      0.238 ms        0.238 ms         2956
+---------------------------------------------------------------------------------------
+Benchmark                                             Time             CPU   Iterations
+---------------------------------------------------------------------------------------
+Vector_1D_Fill                                    0.132 ms        0.132 ms         5322
 ```
 
 # Conclusions 
@@ -170,11 +169,30 @@ Overall, I learned that
 
 - CMake basics + Google Benchmark for the software side.
 - nested vectors are bad, 1d buffers are where it's at
-- the `.at()` might actually help, since we're clearer about our intentions with the vector.
+- the `.at()` might actually help, since we're clearer about our intentions with the vector. This is also the same with use of the STL.
 - Arrays are allocated on the stack, so their speed benefits are limited by their size.
-- The STL isn't too bad as a default, but you can do better.
+- The STL is actually quite nice sometimes :)
 
 **Huge caveat** This is only for initialising a 2d vector. I say nothing about operations on these objects, since I haven't measured anything on that yet.
 
+## Full Table of Benchmarks
 
-
+````bash
+$ ./bin/allocation_test --benchmark_unit_time=ms
+---------------------------------------------------------------------------------------
+Benchmark                                             Time             CPU   Iterations
+---------------------------------------------------------------------------------------
+Vector_NoReserve                                   2.02 ms         2.02 ms          342
+Vector_Reserve                                     2.05 ms         2.04 ms          439
+Vector_1D_NoReserve                                5.59 ms         5.59 ms          147
+Vector_1D_Reserve                                  5.31 ms         5.31 ms          155
+Vector_1D_ReserveIndexing                         0.202 ms        0.202 ms         3447
+Vector_1D_ReserveIndexing_Offset                  0.202 ms        0.202 ms         3461
+Vector_1D_ReserveIndexing_BoundsCheck             0.137 ms        0.137 ms         5166
+Vector_1D_ReserveIndexing_Offset_BoundsCheck      0.135 ms        0.135 ms         5207
+Vector_1D_STL                                     0.538 ms        0.538 ms         1296
+Vector_1D_Fill                                    0.132 ms        0.132 ms         5322
+Array                                             0.220 ms        0.220 ms         3182
+Array_1D                                          0.221 ms        0.221 ms         3145
+Array_1D_Offset                                   0.221 ms        0.221 ms         3163
+```
