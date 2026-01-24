@@ -134,7 +134,7 @@ for (int i = 0; i < row_size; i++) {
 }
 ```
 
-This pushes our code to execute even faster, to >5000 iterations! 
+This doesn't change anything too significantly, suggesting that the compiler is already doing this for us. But, overall, the 1D buffer implementation is paying dividends, since we're now taking ~0.136ms to initialise 1,000,000 doubles. 
 
 ```bash
 ---------------------------------------------------------------------------------------
@@ -167,13 +167,15 @@ Vector_1D_Fill                                    0.132 ms        0.132 ms      
 
 Overall, I learned that 
 
-- CMake basics + Google Benchmark for the software side.
 - nested vectors are bad, 1d buffers are where it's at
 - the `.at()` might actually help, since we're clearer about our intentions with the vector. This is also the same with use of the STL.
 - Arrays are allocated on the stack, so their speed benefits are limited by their size.
 - The STL is actually quite nice sometimes :)
+- CMake basics + Google Benchmark for the software is a potent combo.
 
-**Huge caveat** This is only for initialising a 2d vector. I say nothing about operations on these objects, since I haven't measured anything on that yet.
+<div class="remark">
+This is only for initialising a 2d vector. I say nothing about operations on these objects, since I haven't measured anything on that yet.
+</div>
 
 ## Full Table of Benchmarks
 
