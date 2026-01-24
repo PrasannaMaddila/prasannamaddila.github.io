@@ -86,7 +86,7 @@ Array                                             0.220 ms        0.220 ms      
 Array_1D                                          0.221 ms        0.221 ms         3145
 ```
 
-So, we have some catching up to do ! On the other hand, we can't use arrays willy-nilly here. The difference is that arrays are statically allocated objects on the stack, not the heap. That means that their size must be known at compile time. Alternatively stated, we cannot use arrays that are bigger than the program stack :( - for example, setting row and column sizes to $5000$ gives me the classic `Segmentation fault: core dumped` error that should be intimate knowledge to all of us here. 
+So, we have some catching up to do ! On the other hand, we can't use arrays willy-nilly here. The difference is that arrays are statically allocated objects on the stack, not the heap. That means that their size must be known at compile time, which is not always possible. In any case, we cannot use arrays that are bigger than the program stack :( : that's going to give me the classic `Segmentation fault: core dumped` error that should be intimate knowledge to all of us here. 
 
 # Step 3. My Vector is an Array
 
@@ -112,7 +112,7 @@ for (int i = 0; i < row_size; i++) {
 }
 ```
 
-That puts us right back at array speeds, if not a little better. Since our memory access in this example is best friends with the cache and the branch predictor, I suspect we get some sort of bonus.
+That puts us right back at array speeds + a bounds check is included in for free. While this particular run shows quite favorably for `at()`, this is 50-50 on my machine. In any case, inspecting the assembly in Godbolt shows that the bounds check is essentially optimised away since the compiler can determine at compile-time it's unnecessary. For reference, here's the [Godbolt](https://godbolt.org/z/sj78rqY4T) snippet to check the assembly output. Notice that the instructions are all SIMD; clang is also auto-vectorising this !
 
 ```bash
 ---------------------------------------------------------------------------------------
@@ -154,7 +154,11 @@ std::vector< double > vector_1d(row_size * col_size);
 std::fill(vector_1d.begin(), vector_1d.end(), 1.0);
 ```
 
-And does it deliver ! A marginal improvement over our handwritten champion (1d vector + pre-reserve + offset variable + bounds-checked accesses), and a much cleaner implementation too - 1 single line.
+<div class="remark">
+Using the constructor std::vector<T> with the size argument (See (3) at [std::vector](https://en.cppreference.com/w/cpp/container/vector/vector)) default initialises all the entries. For doubles, this happens to be 0.0. So, we are doing double work by calling in `std::fill` when we could be doing simply `std::vector<double> vec(size, value)`, but this might be tricky to benchmark. So, we shall ignore it completely.
+</div>
+
+And does it deliver ! A marginal improvement over our handwritten champion (1d vector + pre-reserve + offset variable + bounds-checked accesses), and a much cleaner implementation too - 1 single line. In any case, this is comparable speed to the handwritten stuff, and we get in code readability as well.
 
 ```bash
 ---------------------------------------------------------------------------------------
@@ -171,6 +175,7 @@ Overall, I learned that
 - the `.at()` might actually help, since we're clearer about our intentions with the vector. This is also the same with use of the STL.
 - Arrays are allocated on the stack, so their speed benefits are limited by their size.
 - The STL is actually quite nice sometimes :)
+    - Later standards like C++17/20 have nicer things like [execution policies](https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag_t.html) that can parallelise STL functions automatically.
 - CMake basics + Google Benchmark for the software is a potent combo.
 
 <div class="remark">
