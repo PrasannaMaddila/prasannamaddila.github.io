@@ -154,11 +154,9 @@ std::vector< double > vector_1d(row_size * col_size);
 std::fill(vector_1d.begin(), vector_1d.end(), 1.0);
 ```
 
-<div class="remark">
-Using the constructor std::vector<T> with the size argument (See (3) at [std::vector](https://en.cppreference.com/w/cpp/container/vector/vector)) default initialises all the entries. For doubles, this happens to be 0.0. So, we are doing double work by calling in `std::fill` when we could be doing simply `std::vector<double> vec(size, value)`, but this might be tricky to benchmark. So, we shall ignore it completely.
-</div>
+Side-note: Using the constructor std::vector<T> with the size argument (See (3) at [std::vector](https://en.cppreference.com/w/cpp/container/vector/vector)) default initialises all the entries. For doubles, this happens to be 0.0. So, we are doing double work by calling in `std::fill` when we could be doing simply `std::vector<double> vec(size, value)`, but this might be tricky to benchmark. So, we shall ignore it completely.
 
-And does it deliver ! A marginal improvement over our handwritten champion (1d vector + pre-reserve + offset variable + bounds-checked accesses), and a much cleaner implementation too - 1 single line. In any case, this is comparable speed to the handwritten stuff, and we get in code readability as well.
+In any case, the STL delivers ! A marginal improvement over our handwritten champion (1d vector + pre-reserve + offset variable + bounds-checked accesses) in this case, and a much cleaner implementation too - 1 single line. In any case, this is comparable speed to the handwritten stuff, and we get in code readability as well.
 
 ```bash
 ---------------------------------------------------------------------------------------
