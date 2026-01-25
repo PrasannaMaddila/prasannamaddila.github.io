@@ -1,6 +1,9 @@
-# Posts 
+---
+layout: page
+title: "Posts"
+---
 
-Here's the complete list of posts on this site. 
+Here's the complete list of posts on this site.
 
 # Math
 
