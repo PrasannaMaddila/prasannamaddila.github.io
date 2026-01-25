@@ -11,16 +11,29 @@ Hello ! Welcome to my blog. This is for all things code and math that I find int
 There's also a list of personal news, but this list is updated asynchronously. Peruse at your own risk, fellow traveller !
 
 
-# Posts 
+# [Posts](./posts.md)
+
+Here's a quick overview of my latest posts.
+
+## Math 
 
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.categories.math limit:3 %}
     <li>
       <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
 
+## Code 
+
+<ul>
+  {% for post in site.categories.code limit:3 %}
+    <li>
+      <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 
 ### Contributing and Issues
 

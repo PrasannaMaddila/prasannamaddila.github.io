@@ -20,3 +20,4 @@ markdown: kramdown
 header_pages:
     - about.md
     - news.md
+    - posts.md
