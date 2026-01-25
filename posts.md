@@ -7,7 +7,7 @@ Here's the complete list of posts on this site.
 
 # Math
 
-These posts are mostly on math I find interesting. You can definitely expect some algebra in there, but it mostly depends on what math I find interesting.
+These posts are mostly on math I find interesting. You can definitely expect some algebra in there, but other curiosities might find their way here.
 
 <ul>
   {% for post in site.categories.math %}
