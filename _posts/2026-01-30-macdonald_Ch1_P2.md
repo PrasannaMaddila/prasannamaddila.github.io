@@ -52,7 +52,8 @@ f(x)g(x) & = (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1
 \end{aligned}
 $$
 
-and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. More concisely, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_n b_m = 0$. Then, 
+and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. More concisely, we have that $\forall 0 < k \leq m+n, \sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_n b_m = 0$. Then, 
+
 $$
 \begin{aligned}
     & a_{n-1}b_{m} + a_{n}b_{m-1} = 0 \\
@@ -61,7 +62,7 @@ $$
 \end{aligned}
 $$
 
-since $a_{n}b_{m}$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r$, $a_n^{r}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
+since $a_nb_m$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r, a_n^{r}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
 
 $$
 \begin{aligned}
