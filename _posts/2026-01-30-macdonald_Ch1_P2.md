@@ -19,6 +19,7 @@ The point of this exercise is to understand the units, zero divisors and nilpote
 - **Fact 1** The Nilradical $Nil(A)$ is the ideal formed by all nilpotent elements in $A$.
 - **Fact 2** $Nil(A)$ is the intersection of all prime ideals of $A$.
 - **Fact 3** (Exercise 1) The sum of a unit and a nilpotent is a unit in $A$. (See [Solution](https://math.stackexchange.com/a/1957279/627540))
+- **Fact 4** In an integral domain $I$, we have for $f,g \in I[x]$, $deg(fg) = deg(f) + deg(g)$. (See [Lemma 1.7, Notes:IntegralDomain](https://www.math.columbia.edu/~khovanov/ma2_fall/files/03_integral_domains.pdf)).
 
 # Exercise 2. What happens in A[x]
 
@@ -47,7 +48,7 @@ $$
 \end{align*}
 $$
 
-since $a_{n}b_{m}$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r$, $a^{r}_{n}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
+since $a_{n}b_{m}$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r$, $a_n^{r}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
 
 $$
 \begin{align*}
@@ -99,8 +100,11 @@ We need to show that $f(x)$ and $g(x)$ are primitive $\iff$ $fg$ is primitive. T
 
 $\implies$ Suppose by contradiction that $fg$ is not primitive. Then, its coefficients $(c_0, c_1, \cdots, c_{n+m})$ must be contained in some maximal ideal $M$ (which is by definition proper). Since $M$ is maximal in $A$, we know that $A/M$ is a field (and in particular, an integral domain). Then, looking in the ring $(A/M)[x]$ (the quotient map sends polynomials $A[x] \rightarrow (A/M)[x]$), we have that $fg(x) = 0$; however, $f(x) \neq 0, g(x) \neq 0$. Since an integral domain does not have any zero-divisors, this is a contradiction.
 
-$\impliedby$ To show the other way, suppose that $fg$ is primitive, and $f$ is not primitive. Then, the coefficients of $f$, $(a_0, \ldots, a_n) \subseteq M$, where $M$ is some maximal ideal, again. In particular, the coefficients of $fg$ are contained in the product ideal $(a_0, \ldots, a_n)(b_0, \ldots, b_m) \subseteq (a_0, \ldots, a_n) \cap (b_0, \ldots, b_m) = M \cap A = M$. However, that contradicts the primitivity of $fg$. Reasoning similarly for $g$, we conclude the proof.
+$\impliedby$ To show the other way, suppose that $fg$ is primitive, and $f$ is not primitive. Then, the coefficients of $f$, $(a_0, \ldots, a_n) \subseteq M$, where $M$ is some maximal ideal, again. In particular, the coefficients of $fg$ are contained in the product ideal $(a_0, \ldots, a_n)(b_0, \ldots, b_m) \subseteq (a_0, \ldots, a_n) \cap (b_0, \ldots, b_m) \subseteq M \cap A = M$. However, that contradicts the primitivity of $fg$. Reasoning similarly for $g$, we conclude the proof.
 
 # Notes
 
-Notice that Part 4 involved absolutely no coefficient chasing. Instead, we just used ring-theoretic properties to a few contradictions. Being very concise, it trades off the "first-principles" interpretability for ease of proof. Something I have no doubt will follow me for the rest of the chapter.
+Notice that Part 4 involved absolutely no coefficient chasing. Instead, we just used ring-theoretic properties to a few contradictions. Being very concise, it trades off the "first-principles" interpretability for ease of proof. Something I have no doubt will follow me for the rest of the chapter. In fact, we can re-use this type of thinking to show, say, Part 1.
+
+**(Part 1, v2)** 
+$\implies$ Suppose that $f(x)$ is a unit i.e. $f(x)g(x) = 1$ for some $g(x)$. Then, we take some prime ideal $p$ and look modulo the quotient $A/p$. This gives us $\tilde{f}(x)\tilde{g}(x) = 1$ (in A/p[x]). Since $A/p$ is an integral domain, we must have that $deg(\tilde{f}\tilde{g}) = 0 = deg(\tilde{f}) + deg(\tilde{g})$, and in particular, $deg(\tilde{f}) = 0$ (Fact 4). This forces $\forall 1 \leq i \leq n$, $\tilde{a_i} = 0$. Since the choice of prime ideal was arbitrary, we must have that $a_i$ ($i \geq 1$), must be $0$ in all prime ideals, and in particular, they belong to them all. Alternatively, they belong to $Nil(A)$ (Fact 2), concluding the proof.
