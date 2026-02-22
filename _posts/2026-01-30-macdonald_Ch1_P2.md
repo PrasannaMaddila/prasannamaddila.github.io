@@ -1,20 +1,31 @@
 ---
 layout: post
-title: "[Comm.Alg] Exercise on Nilpotent Elements"
+title: "[Comm.Alg] Exercise on Polynomial Rings"
 categories: math
 ---
 
-I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. Specifically, this is Chapter 1's Exercise 2 on Nilpotent Elements. If you need a quick [Primer on Rings]({% post_url 2023-12-25-primer-on-rings %}), I've got a terse post for you.
+I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. Specifically, this is Chapter 1's Exercise 2 on Polynomial Rings. If you need a quick [Primer on Rings]({% post_url 2023-12-25-primer-on-rings %}), I've got a terse post for you.
 
-# Nilpotency 
+# Some Definitions 
 
-An element in a ring $a \in A$ is called _nilpotent_ if there exists some natural number $n>0$ such that $a^n = 0$. On the other hand, an element $a$ is called a [_unit_](https://knowyourmeme.com/photos/1361701-absolute-unit) if there exists $b\in A$ such that $ab = 1$. Lastly, a zero divisor is an element $a\in A$ such that there exists $b \in A$ and $ab = 0$, while $a \neq 0, b \neq 0$. Essentially, it's the paradoxical situation of multiplying two things to get nothing.
+<div class="defn" text="Groups">
+For a commutative ring, we define:
+<ol>
+<li> An element $a$ is called a [_unit_](https://knowyourmeme.com/photos/1361701-absolute-unit) if there exists $b\in A$ such that $ab = 1$. </li>
+<li> A _zero divisor_ is an element $a\in A$ such that there exists $b \in A$ and $ab = 0$, while $a \neq 0, b \neq 0$. Essentially, it's the paradoxical situation of multiplying two things to get nothing. </li>
+<li> An element in a ring $a \in A$ is called _nilpotent_ if there exists some natural number $n>0$ such that $a^n = 0$. </li>
+</ol>
+</div>
 
 A quick example in $\mathbb{Z}_4$ : 
-- $3$ is a unit since $3 * 3 = 9 (mod 4) = 1$.
-- $2$ is a zero-divisor (and a nilpotent) since $2 * 2 = 4 (mod 4) = 0$.
+- $3$ is a unit since $3 * 3 = 9 \quad (mod \quad 4) = 1$.
+- $2$ is a zero-divisor (and a nilpotent) since $2 * 2 = 4 \quad (mod \quad 4) = 0$.
 
-The point of this exercise is to understand the units, zero divisors and nilpotents in the polynomial ring $A[x]$, whenever $A$ is a commutative ring. We will actively use the following facts on the ring $A$:
+<div class="remark">
+Note, also, that all nilpotents are zero divisors, but not all zero-divisors are nilpotents.
+</div>
+
+We will also use the following facts for a (commutative) ring $A$:
 
 - **Fact 1** The Nilradical $Nil(A)$ is the ideal formed by all nilpotent elements in $A$.
 - **Fact 2** $Nil(A)$ is the intersection of all prime ideals of $A$.
@@ -23,23 +34,25 @@ The point of this exercise is to understand the units, zero divisors and nilpote
 
 # Exercise 2. What happens in A[x]
 
+Now that we know what units, zero divisors and nilpotents look like in the normal ring $A$, we look at how their equivalents  look like in the polynomial ring $A[x]$. This is the ring of _finite-degree_ polynomials $f(x) = a_0 + a_1x + \ldots + a_nx^n$, where the coefficients $a_i \in A$, $\forall i \leq n$.
+
 ## Part 1. Units of A[x]
 
-Suppose that $f(x) \in A[x]$ as $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_n x^n$. We need to show that $f(x)$ is a unit $\iff$ $a_0$ is a unit in $A$ and $a_1,\ldots,a_n$ are nilpotent.
+Suppose that $f(x) \in A[x]$ as $f(x) = a_0 + a_1x + a_2x^2 + \ldots + a_n x^n$. We need to show that $f(x)$ is a unit $\iff$ $a_0$ is a unit in $A$ and $a_1,\ldots,a_n$ are nilpotent.
 
 $\implies$ Assume that $f(x)$ is a unit. By definition, we have that 
 
 $$
 \begin{align*}
-f(x)g(x) &= (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \\
+& f(x)g(x) = (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \\
 \implies & a_0b_0 = 1, \\
          & (a_1b_0 + a_0b_1) = 0 \\
-         & \ldots 
+         & \ldots \\
+         & a_n b_m = 0
 \end{align*}
 $$
 
-and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. In particular, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_m b_m = 0$. Then, 
-
+and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. More concisely, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_m b_m = 0$. Then, 
 $$
 \begin{align*}
     & a_{n-1}b_{m} + a_{n}b_{m-1} = 0 \\
@@ -72,7 +85,7 @@ $\impliedby$ Suppose then that $f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ is 
 
 ## Part 2: Nilpotents in A[x]
 
-Now, we examine the nilpotent elements of $A[x]$. In particular, we need to show that $f(x) = a_0 + \cdots + a_nx^n$  is nilpotent if and only if all the coefficients are nilpotent. 
+Now, we examine the nilpotent elements of $A[x]$. In particular, we need to show that $f(x) = a_0 + \ldots + a_nx^n$  is nilpotent if and only if all the coefficients are nilpotent. 
 
 $\implies$ Suppose then that $f$ is nilpotent. Then there must be some $k\in\mathbb{N}$ such that $f(x)^k = 0$. This implies that $a_n^k x^{nk} = 0$ i.e. $a_n$ is nilpotent. So, looking as usual on the difference 
 $$
@@ -94,15 +107,15 @@ Okay, we're getting somewhere. We can repeat this process for $a_{n-r}$, $r\leq 
 
 ## Part 4: Primitives in A[x]
 
-So, the exercise introduces primitive polynomials at this point. These are defined as polynomials $f(x) \in A[x]$ such that the ideal generated by the coefficients generates the ring i.e. $(a_0, a_1, \cdots, a_n) = (1) = A$. For a quick example, consider $A = \mathbb{Z}$ and $f(x) = 1 + 3x$.
+So, the exercise introduces primitive polynomials at this point. These are defined as polynomials $f(x) \in A[x]$ such that the ideal generated by the coefficients generates the ring i.e. $(a_0, a_1, \ldots, a_n) = (1) = A$. For a quick example, consider $A = \mathbb{Z}$ and $f(x) = 1 + 3x$.
 
 We need to show that $f(x)$ and $g(x)$ are primitive $\iff$ $fg$ is primitive. This is where I start getting tired of chasing coefficients, and start embracing the algebra.
 
-$\implies$ Suppose by contradiction that $fg$ is not primitive. Then, its coefficients $(c_0, c_1, \cdots, c_{n+m})$ must be contained in some maximal ideal $M$ (which is by definition proper). Since $M$ is maximal in $A$, we know that $A/M$ is a field (and in particular, an integral domain). Then, looking in the ring $(A/M)[x]$ (the quotient map sends polynomials $A[x] \rightarrow (A/M)[x]$), we have that $fg(x) = 0$; however, $f(x) \neq 0, g(x) \neq 0$. Since an integral domain does not have any zero-divisors, this is a contradiction.
+$\implies$ Suppose by contradiction that $fg$ is not primitive. Then, its coefficients $(c_0, c_1, \ldots, c_{n+m})$ must be contained in some maximal ideal $M$ (which is by definition proper). Since $M$ is maximal in $A$, we know that $A/M$ is a field (and in particular, an integral domain). Then, looking in the ring $(A/M)[x]$ (the quotient map sends polynomials $A[x] \rightarrow (A/M)[x]$), we have that $fg(x) = 0$; however, $f(x) \neq 0, g(x) \neq 0$. Since an integral domain does not have any zero-divisors, this is a contradiction.
 
 $\impliedby$ To show the other way, suppose that $fg$ is primitive, and $f$ is not primitive. Then, the coefficients of $f$, $(a_0, \ldots, a_n) \subseteq M$, where $M$ is some maximal ideal, again. In particular, the coefficients of $fg$ are contained in the product ideal $(a_0, \ldots, a_n)(b_0, \ldots, b_m) \subseteq (a_0, \ldots, a_n) \cap (b_0, \ldots, b_m) \subseteq M \cap A = M$. However, that contradicts the primitivity of $fg$. Reasoning similarly for $g$, we conclude the proof.
 
-# Retour en arrière ...
+## Retour en arrière ...
 
 Notice that Part 4 involved absolutely no coefficient chasing. Instead, we just used ring-theoretic properties to a few contradictions. Being very concise, it trades off the "first-principles" interpretability for ease of proof. Something I have no doubt will follow me for the rest of the chapter. In fact, we can re-use this type of thinking to shorten the longest proof, Part 1's forward implication.
 
