@@ -43,42 +43,44 @@ Suppose that $f(x) \in A[x]$ as $f(x) = a_0 + a_1x + a_2x^2 + \ldots + a_n x^n$.
 $\implies$ Assume that $f(x)$ is a unit. By definition, we have that 
 
 $$
-\begin{align*}
-& f(x)g(x) = (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \\
+\begin{aligned}
+f(x)g(x) & = (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \\
 \implies & a_0b_0 = 1, \\
          & (a_1b_0 + a_0b_1) = 0 \\
          & \ldots \\
          & a_n b_m = 0
-\end{align*}
+\end{aligned}
 $$
 
-and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. More concisely, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_m b_m = 0$. Then, 
+and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. More concisely, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_n b_m = 0$. Then, 
 $$
-\begin{align*}
+\begin{aligned}
     & a_{n-1}b_{m} + a_{n}b_{m-1} = 0 \\
     & \implies a_{n}a_{m-1}b_{m} + a^2_{n}b_{m-1} = 0 \\
     & \implies a^2_{n}b_{m-1} = 0 \\
-\end{align*}
+\end{aligned}
 $$
 
 since $a_{n}b_{m}$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r$, $a_n^{r}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
 
 $$
-\begin{align*}
+\begin{aligned}
     & a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} = 0 \\
     & \implies a^r_{n} \left( a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} \right) = 0 \\
     & \implies a^{r+1}_{n}b_{m-r-1} = 0
-\end{align*}
+\end{aligned}
 $$
 
 So, carrying the induction all the way to $r = m-1$, we obtain that $a_n^{m-1}b_{0} = 0$, which is not possible. The contradiction comes from the fact that $a_{0}b_{0} = 1$, and so $b_{0}$ is a unit. Therefore, it cannot be a zero divisor, and in particular, $a_{n}$ is nilpotent. 
 
-We can leverage this by noticing that $f(x) - a_{n}x^{n}$ is the difference of a unit (by hypothesis) and a nilpotent element (which we just proved). By Exercise 1[1], we deduce that 
+We can leverage this by noticing that $f(x) - a_{n}x^{n}$ is the difference of a unit (by hypothesis) and a nilpotent element (which we just proved). By Fact 3 we deduce that 
+
 $$
-\begin{align*}
+\begin{aligned}
     f(x) - a_{n}x^{n} = a_{n-1}x^{m-1} + \ldots + a_0 
-\end{align*}
+\end{aligned}
 $$
+
 is also a unit. We can thus descend on the degree of $f$, showing at each level by the same argument that $a_{n-1}, a_{n-2}, \ldots, a_1$, must all be nilpotent. This finishes the forward path. 
 
 $\impliedby$ Suppose then that $f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ is a polynomial such that $a_{0}$ is a unit, and $a_{1}, \ldots$ are all nilpotent. Then, we have that $a_1x, \ldots, a_nx^n$ are the sum of nilpotent elements, and are thus nilpotent themselves. The fancy way of saying this is that the Nilradical (ideal of all nilpotent elements) is (shocker) an ideal. Therefore, $f(x)$ is the sum of a unit ($a_0$) and a nilpotent, and is thus a unit (following from Exercise 1).
@@ -88,11 +90,13 @@ $\impliedby$ Suppose then that $f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ is 
 Now, we examine the nilpotent elements of $A[x]$. In particular, we need to show that $f(x) = a_0 + \ldots + a_nx^n$  is nilpotent if and only if all the coefficients are nilpotent. 
 
 $\implies$ Suppose then that $f$ is nilpotent. Then there must be some $k\in\mathbb{N}$ such that $f(x)^k = 0$. This implies that $a_n^k x^{nk} = 0$ i.e. $a_n$ is nilpotent. So, looking as usual on the difference 
+
 $$
-\begin{align*}
+\begin{aligned}
 f(x) - a_nx^n = a_{n-1}x^{n-1} + \ldots + a_{0}
-\end{align*}
+\end{aligned}
 $$
+
 we have that the LHS is nilpotent (sum of nilpotents is nilpotent). Therefore, we can inductively show that for each $a_i$, it is nilpotent by descending on the degree of $f$.
 
 $\impliedby$ This just follows from the fact that the polynomial expressed as the sum of nilpotents.
