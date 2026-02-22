@@ -26,51 +26,48 @@ The point of this exercise is to understand the units, zero divisors and nilpote
 
 Suppose that $f(x) \in A[x]$ as $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_n x^n$. We need to show that $f(x)$ is a unit $\iff$ $a_0$ is a unit in $A$ and $a_1,\ldots,a_n$ are nilpotent.
 
-### Going Forward 
-So, let's prove the forward implication first. Assume that $f(x)$ is a unit. By definition, we have that 
+$\implies$ Assume that $f(x)$ is a unit. By definition, we have that 
 
 $$
-\begin{align}
-f(x)g(x) &= (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \nonumber \\
+\begin{align*}
+f(x)g(x) &= (a_0 + a_1 x + \ldots + a_n x^n)(b_0 + b_1 x + \ldots + b_mx^m) = 1 \\
 \implies & a_0b_0 = 1, \\
          & (a_1b_0 + a_0b_1) = 0 \\
          & \ldots 
-\end{align}
+\end{align*}
 $$
 
 and so on. This just follows from writing out the coefficients of $x^k$, $0 < k \leq m+n$. In particular, we have that $\forall 0 < k \leq m+n$, $\sum_{i+j = k} a_ib_j = 0$. Let's use this. For example, we have that the highest power term $a_m b_m = 0$. Then, 
 
 $$
-\begin{align}
-a_{n-1}b_{m} + a_{n}b_{m-1} = 0 \nonumber \\
-\implies a_{n}a_{m-1}b_{m} + a^2_{n}b_{m-1} = 0 \nonumber \\
-\implies a^2_{n}b_{m-1} = 0 \nonumber \\
-\end{align}
+\begin{align*}
+    & a_{n-1}b_{m} + a_{n}b_{m-1} = 0 \\
+    & \implies a_{n}a_{m-1}b_{m} + a^2_{n}b_{m-1} = 0 \\
+    & \implies a^2_{n}b_{m-1} = 0 \\
+\end{align*}
 $$
 
 since $a_{n}b_{m}$ zeroes out in the first term. Let's set up an induction on $r$: the hypothesis is that $\forall r$, $a^{r}_{n}b_{m-1} = 0$. We've just shown the base case. Then, we have the coefficient of $r-1$ as : 
 
 $$
-\begin{align}
-a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} = 0 \\
-\implies a^r_{n} \left( a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} \right) = 0 \\
-\implies a^{r+1}_{n}b_{m-r-1} = 0
-\end{align}
+\begin{align*}
+    & a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} = 0 \\
+    & \implies a^r_{n} \left( a_{n-r-1}b_{m} + a_{n-r-2}b_{m+1} + \ldots + a_{n}b_{m-r-1} \right) = 0 \\
+    & \implies a^{r+1}_{n}b_{m-r-1} = 0
+\end{align*}
 $$
 
-So, carrying the induction all the way to $r = m-1$, we obtain that $a^{m-1}_{n}b_{0} = 0$, which is not possible. The contradiction comes from the fact that $a_{0}b_{0} = 1$, and so $b_{0}$ is a unit. Therefore, it cannot be a zero divisor, and in particular, $a_{n}$ is nilpotent. 
+So, carrying the induction all the way to $r = m-1$, we obtain that $a_n^{m-1}b_{0} = 0$, which is not possible. The contradiction comes from the fact that $a_{0}b_{0} = 1$, and so $b_{0}$ is a unit. Therefore, it cannot be a zero divisor, and in particular, $a_{n}$ is nilpotent. 
 
 We can leverage this by noticing that $f(x) - a_{n}x^{n}$ is the difference of a unit (by hypothesis) and a nilpotent element (which we just proved). By Exercise 1[1], we deduce that 
 $$
-\begin{align}
-f(x) - a_{n}x^{n} = a_{n-1}x^{m-1} + \ldots + a_0 
-\end{align}
+\begin{align*}
+    f(x) - a_{n}x^{n} = a_{n-1}x^{m-1} + \ldots + a_0 
+\end{align*}
 $$
 is also a unit. We can thus descend on the degree of $f$, showing at each level by the same argument that $a_{n-1}, a_{n-2}, \ldots, a_1$, must all be nilpotent. This finishes the forward path. 
 
-### and then Backward
-
-Suppose then that $f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ is a polynomial such that $a_{0}$ is a unit, and $a_{1}, \ldots$ are all nilpotent. Then, we have that $a_1x, \ldots, a_nx^n$ are the sum of nilpotent elements, and are thus nilpotent themselves. The fancy way of saying this is that the Nilradical (ideal of all nilpotent elements) is (shocker) an ideal. Therefore, $f(x)$ is the sum of a unit ($a_0$) and a nilpotent, and is thus a unit (following from Exercise 1).
+$\impliedby$ Suppose then that $f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ is a polynomial such that $a_{0}$ is a unit, and $a_{1}, \ldots$ are all nilpotent. Then, we have that $a_1x, \ldots, a_nx^n$ are the sum of nilpotent elements, and are thus nilpotent themselves. The fancy way of saying this is that the Nilradical (ideal of all nilpotent elements) is (shocker) an ideal. Therefore, $f(x)$ is the sum of a unit ($a_0$) and a nilpotent, and is thus a unit (following from Exercise 1).
 
 ## Part 2: Nilpotents in A[x]
 
@@ -90,7 +87,9 @@ $\impliedby$ This just follows from the fact that the polynomial expressed as th
 
 Now, we show that $f(x)$ is a zero-divisor in $A[x]$ $\iff$ there exists some $a\in A$ such that $af(x) = 0$ i.e. some constant annihilates all the ring. Notice that the reverse implication trivially follows from the definitions, so we forget about it.
 
-$\implies$ Suppose there exists some $g(x)\in A[x]$ of least degree $m$ such that $f(x)g(x) = 0$. Then, we must have that $a^nb^m = 0$, by writing out the multiplication. In particular, if I replace $g(x)$ with $a_n g(x)$, we have that $f(x)\cdot a_ng(x) = a_nf(x)g(x) = 0$, since multiplication is commutative. However, notice that $a_ng(x)$ has degree $m-1$, since $a_n$ annihilates $b_m$. So, this contradicts that $g(x)$ was a polynomial of least degree $m$ that annihilates $f(x)$. So, inducting again on the degree of $g$, we have that $deg(g) = 0$ i.e. $g(x) = a$ for some constant $a\in A$.
+$\implies$ Suppose there exists some $g(x)\in A[x]$ of least degree $m$ such that $f(x)g(x) = 0$. Then, we must have that $a^nb^m = 0$, by writing out the multiplication. In particular, if I replace $g(x)$ with $a_n g(x)$, we have that $f(x)\cdot a_ng(x) = a_nf(x)g(x) = 0$, since multiplication is commutative. However, notice that $a_ng(x)$ has degree $m-1$, since $a_n$ annihilates $b_m$. Since $g$ was supposed to be the minimial degree annihilator, we must have that $a_ng(x) = 0$. 
+
+Okay, we're getting somewhere. We can repeat this process for $a_{n-r}$, $r\leq n$ to show that for all $a_i$, $a_ig(x) = 0$. Observe now that we have $a_ib_m = 0$, for all $i \leq n$ and this gives us the assertion that $b_m f(x) = 0$. This concludes the proof.
 
 ## Part 4: Primitives in A[x]
 
