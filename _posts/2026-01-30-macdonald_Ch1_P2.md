@@ -4,7 +4,11 @@ title: "[Comm.Alg] Exercise on Polynomial Rings"
 categories: math
 ---
 
-I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. Specifically, this is Chapter 1's Exercise 2 on Polynomial Rings. If you need a quick [Primer on Rings]({% post_url 2023-12-25-primer-on-rings %}), I've got a terse post for you.
+I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. If you need a quick [Primer on Rings]({% post_url 2023-12-25-primer-on-rings %}), I've got a terse post for you.
+
+### Summary 
+
+We're working through Chapter 1, Exercise 2. This exercise works on identifying what units, nilpotents, zero divisors and nilpotents look like in $A[x]$, for a commutative ring $A$. Personally, I found this important because I moved from deriving from first principles to using more "algebraic" arguments.
 
 # Some Definitions 
 
@@ -36,7 +40,7 @@ We will also use the following facts for a (commutative) ring $A$:
 
 Now that we know what units, zero divisors and nilpotents look like in the normal ring $A$, we look at how their equivalents  look like in the polynomial ring $A[x]$. This is the ring of _finite-degree_ polynomials $f(x) = a_0 + a_1x + \ldots + a_nx^n$, where the coefficients $a_i \in A$, $\forall i \leq n$.
 
-## Part 1. Units of A[x]
+## Part 1. Units in A[x]
 
 Suppose that $f(x) \in A[x]$ as $f(x) = a_0 + a_1x + a_2x^2 + \ldots + a_n x^n$. We need to show that $f(x)$ is a unit $\iff$ $a_0$ is a unit in $A$ and $a_1,\ldots,a_n$ are nilpotent.
 
@@ -120,9 +124,9 @@ $\implies$ Suppose by contradiction that $fg$ is not primitive. Then, its coeffi
 
 $\impliedby$ To show the other way, suppose that $fg$ is primitive, and $f$ is not primitive. Then, the coefficients of $f$, $(a_0, \ldots, a_n) \subseteq M$, where $M$ is some maximal ideal, again. In particular, the coefficients of $fg$ are contained in the product ideal $(a_0, \ldots, a_n)(b_0, \ldots, b_m) \subseteq (a_0, \ldots, a_n) \cap (b_0, \ldots, b_m) \subseteq M \cap A = M$. However, that contradicts the primitivity of $fg$. Reasoning similarly for $g$, we conclude the proof.
 
-## Retour en arrière ...
+## Revisiting Part 1 (Algebraically)
 
-Notice that Part 4 involved absolutely no coefficient chasing. Instead, we just used ring-theoretic properties to a few contradictions. Being very concise, it trades off the "first-principles" interpretability for ease of proof. Something I have no doubt will follow me for the rest of the chapter. In fact, we can re-use this type of thinking to shorten the longest proof, Part 1's forward implication.
+Notice that Part 4 involved absolutely no coefficient chasing. Instead, we just used ring-theoretic/structural properties to get a contradiction. Being very concise, it trades off the "first-principles" interpretability for ease of proof. Something I have no doubt will follow me for the rest of the chapter. In fact, we can re-use this type of thinking to shorten the longest proof, Part 1's forward implication.
 
 **(Part 1, v2)** 
 $\implies$ Suppose that $f(x)$ is a unit i.e. $f(x)g(x) = 1$ for some $g(x)$. Then, we take some prime ideal $p$ and look modulo the quotient $A/p$. This gives us $\tilde{f}(x)\tilde{g}(x) = 1$ (in A/p[x]). Since $A/p$ is an integral domain, we must have that $deg(\tilde{f}\tilde{g}) = 0 = deg(\tilde{f}) + deg(\tilde{g})$, and in particular, $deg(\tilde{f}) = 0$ (Fact 4). This forces $\forall 1 \leq i \leq n$, $\tilde{a_i} = 0$. Since the choice of prime ideal was arbitrary, we must have that $a_i$ ($i \geq 1$), must be $0$ in all prime ideals, and in particular, they belong to them all. Alternatively, they belong to $Nil(A)$ (Fact 2), concluding the proof.
@@ -130,10 +134,25 @@ $\implies$ Suppose that $f(x)$ is a unit i.e. $f(x)g(x) = 1$ for some $g(x)$. Th
 
 # Conclusions
 
+Concretely,
+
+- We characterised (if I can use that word) how different types of elements translate over to the polynomial ring.
+- The next exercise is to show that these results generalise for mulinomial rings i.e. $A[x_1, x_2, \ldots, x_n]$.
+    - I suspect this might come from the fact that $A[x_1, x_2, \ldots, x_n] = A[x_1, x_2, \ldots, x_{n-1}][x_n]$. This is to be verified, but the reasoning goes like this: the polynomial ring in $n$ variables comes from using elements in the ring in $(n-1)$ variables as coefficients for powers of $x_n$. For example,
+
+$$
+\begin{aligned}
+f(x_1, \ldots, x_n) = \sum_{i=1}^k g_i(x_1,\ldots,x_{n-1}) x_n^i
+\end{aligned}
+$$
+
+Pedagogically, 
+
 - Working through [AM](https://www.taylorfrancis.com/books/mono/10.1201/9780429493638/introduction-commutative-algebra-michael-atiyah-macdonald) is kind of nice. Definitely need to pair this with other material to make sure I'm doing the right things.
 - Learning (what I call) the algebraic way of doing things, as opposed to starting from the definitions, is an exercise in and of itself. It can be incredibly opaque. Going to re-visit this when I finish the chapter exercises.
 
-# Important Resources:
+
+## Important Resources:
 
 - [Pete L. Clark's Notes](https://plclark.github.io/PeteLClark/Expositions/integral2015.pdf) on Commutative Algebra. More of a reference text, but definitely less terse than AM.
 -  Good Ol' [StackExchange](https://math.stackexchange.com).
