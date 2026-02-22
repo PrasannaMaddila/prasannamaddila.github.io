@@ -8,18 +8,18 @@ I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Com
 
 # Some Definitions 
 
-<div class="defn" text="Groups">
+<div class="defn" text="Units, Zero-Divisors and Nilpotents" markdown="1">
 For a commutative ring, we define:
-<ol>
-<li> An element $a$ is called a [_unit_](https://knowyourmeme.com/photos/1361701-absolute-unit) if there exists $b\in A$ such that $ab = 1$. </li>
-<li> A _zero divisor_ is an element $a\in A$ such that there exists $b \in A$ and $ab = 0$, while $a \neq 0, b \neq 0$. Essentially, it's the paradoxical situation of multiplying two things to get nothing. </li>
-<li> An element in a ring $a \in A$ is called _nilpotent_ if there exists some natural number $n>0$ such that $a^n = 0$. </li>
-</ol>
+
+1. An element $a$ is called a [_unit_](https://knowyourmeme.com/photos/1361701-absolute-unit) if there exists $b\in A$ such that $ab = 1$.
+2. A _zero divisor_ is an element $a\in A$ such that there exists $b \in A$ and $ab = 0$, while $a \neq 0, b \neq 0$. Essentially, it's the paradoxical situation of multiplying two things to get nothing.
+3. An element in a ring $a \in A$ is called _nilpotent_ if there exists some natural number $n>0$ such that $a^n = 0$.
+
 </div>
 
 A quick example in $\mathbb{Z}_4$ : 
-- $3$ is a unit since $3 * 3 = 9 \quad (mod \quad 4) = 1$.
-- $2$ is a zero-divisor (and a nilpotent) since $2 * 2 = 4 \quad (mod \quad 4) = 0$.
+- $3$ is a unit since $3 * 3 = 9 \ (mod \ 4) = 1$.
+- $2$ is a zero-divisor (and a nilpotent) since $2 * 2 = 4 \ (mod \ 4) = 0$.
 
 <div class="remark">
 Note, also, that all nilpotents are zero divisors, but not all zero-divisors are nilpotents.
@@ -89,9 +89,9 @@ Now, we examine the nilpotent elements of $A[x]$. In particular, we need to show
 
 $\implies$ Suppose then that $f$ is nilpotent. Then there must be some $k\in\mathbb{N}$ such that $f(x)^k = 0$. This implies that $a_n^k x^{nk} = 0$ i.e. $a_n$ is nilpotent. So, looking as usual on the difference 
 $$
-\begin{align}
+\begin{align*}
 f(x) - a_nx^n = a_{n-1}x^{n-1} + \ldots + a_{0}
-\end{align}
+\end{align*}
 $$
 we have that the LHS is nilpotent (sum of nilpotents is nilpotent). Therefore, we can inductively show that for each $a_i$, it is nilpotent by descending on the degree of $f$.
 
