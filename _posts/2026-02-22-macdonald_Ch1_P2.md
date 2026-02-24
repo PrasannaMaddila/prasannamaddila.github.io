@@ -108,7 +108,7 @@ $\impliedby$ This just follows from the fact that the polynomial expressed as th
 
 ## Part 3: Zero-Divisors in A[x]
 
-Now, we show that $f(x)$ is a zero-divisor in $A[x]$ $\iff$ there exists some $a\in A$ such that $af(x) = 0$ i.e. some constant annihilates all the ring. Notice that the reverse implication trivially follows from the definitions, so we forget about it.
+Now, we show that $f(x)$ is a zero-divisor in $A[x]$ $\iff$ there exists some $a\in A$ such that $af(x) = 0$ i.e. some constant annihilates $f(x)$. Notice that the reverse implication trivially follows from the definitions, so we forget about it.
 
 $\implies$ Suppose there exists some $g(x)\in A[x]$ of least degree $m$ such that $f(x)g(x) = 0$. Then, we must have that $a^nb^m = 0$, by writing out the multiplication. In particular, if I replace $g(x)$ with $a_n g(x)$, we have that $f(x)\cdot a_ng(x) = a_nf(x)g(x) = 0$, since multiplication is commutative. However, notice that $a_ng(x)$ has degree at most $m-1$, since $a_n$ annihilates $b_m$. Since $g$ was supposed to be the minimial degree annihilator, we must have that $a_ng(x) = 0$. 
 
