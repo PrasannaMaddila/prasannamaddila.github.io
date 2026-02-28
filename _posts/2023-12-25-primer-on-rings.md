@@ -47,7 +47,14 @@ In short, the space of square matrices is a ring under element-wise addition and
 
 ## Continuous Functions
 
-Finally, we consider the space of all continuous real-valued functions, $\mathcal{C}(\mathbb{R}) = \{ f: \mathbb{R} \rightarrow \mathbb{R} \}$. Under pointwise addition, i.e. $(f+g)(x) = f(x) + g(x)$, we can easily see that it forms a commutative group. The constant function $f_0(x) = 0, \forall x$, is the additive identity, and the constant function $f_1(x) = 1, \forall x$, is the multiplicative identity. Distributivity is also quite natural to show, since we always have for example, $f(x) (g(x) + h(x)) = f(x)g(x) + f(x)h(x)$, for any three such functions $f,g,h$. However, the inverse of a function is not necessarily defined, since any function with a zero i.e. $\exists x \in \mathbb{R}$ such that $f(x) = 0$, cannot have a (pointwise) inverse. 
+Finally, we consider the space of all continuous real-valued functions, 
+$$
+\begin{align}
+\mathcal{C}(\mathbb{R}) = \{ f: \mathbb{R} \rightarrow \mathbb{R} \}
+\end{align}
+$$ 
+
+Under pointwise addition, i.e. $(f+g)(x) = f(x) + g(x)$, we can easily see that it forms a commutative group. The constant function $f_0(x) = 0, \forall x$, is the additive identity, and the constant function $f_1(x) = 1, \forall x$, is the multiplicative identity. Distributivity is also quite natural to show, since we always have for example, $f(x) (g(x) + h(x)) = f(x)g(x) + f(x)h(x)$, for any three such functions $f,g,h$. However, the inverse of a function is not necessarily defined, since any function with a zero i.e. $\exists x \in \mathbb{R}$ such that $f(x) = 0$, cannot have a (pointwise) inverse. 
 
 
 ## General Definition
