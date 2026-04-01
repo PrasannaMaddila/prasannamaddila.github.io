@@ -3,10 +3,6 @@ layout: default
 title: "Prasanna's Blog"
 ---
 
-<img src="assets/img/ProfilePicBeach.jpg"
-     alt="Prasanna Maddila" 
-     style="float: right; width: 200px; margin-left: 20px">
-
 Hello ! Welcome to my blog. This is for all things code and math that I find interesting - interesting enough that I take out the time to write a little bit about it, which helps me remember it.
 
 # [News](./news.md)
