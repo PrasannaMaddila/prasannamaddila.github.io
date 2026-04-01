@@ -15,11 +15,12 @@ Multi-Adversarial Team Games model the team vs. independent adversary dynamic th
 
 [Code: MATG](https://forge.inrae.fr/chip-gt/multi-adversarial-team-games) The algorithm is provided as a JAX-native, GPU-compatible implementation. 
 
-<table>
+<table class="news-table">
   <tbody>
     {% for item in site.data.matg %}
       <tr>
         <td>
+            <span class="news-date">{{ item.display_date | markdownify }}</span>
             <span class="news-tag">{{ item.tag | markdownify }}</span>
         </td>
         <td class="news-content">
@@ -36,11 +37,12 @@ This is the body of work we produced on modelling Anti-Poaching as a partially o
 
 [Code: APE](https://forge.inrae.fr/chip-gt/antipoaching) Implemented using PettingZoo and comes with some MARL algorithms written in Ray/RLlib.
 
-<table>
+<table class="news-table">
   <tbody>
     {% for item in site.data.ape %}
       <tr>
         <td>
+            <span class="news-date">{{ item.display_date | markdownify }}</span>
             <span class="news-tag">{{ item.tag | markdownify }}</span>
         </td>
         <td class="news-content">
@@ -55,11 +57,12 @@ This is the body of work we produced on modelling Anti-Poaching as a partially o
 
 In addition to my PhD work, I also teach at the University of Toulouse. This is usually a 12-hour primer on Deep Learning for the students of the MSE Master.
 
-<table>
+<table class="news-table">
   <tbody>
     {% for item in site.data.teaching %}
       <tr>
         <td>
+            <span class="news-date">{{ item.display_date | markdownify }}</span>
             <span class="news-tag">{{ item.tag | markdownify }}</span>
         </td>
         <td class="news-content">

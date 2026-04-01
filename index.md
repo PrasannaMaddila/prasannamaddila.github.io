@@ -17,7 +17,7 @@ There's also a list of personal news, but this list is updated asynchronously. P
 
 Here's a quick overview of my latest posts. Click on the header to see the whole list.
 
-<table style="width: 100%; border: none; border-collapse: collapse;">
+<table class="news-table">
   <tbody>
     {% for post in site.posts limit:4 %}
       <tr>
