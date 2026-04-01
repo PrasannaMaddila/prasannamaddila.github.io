@@ -151,6 +151,7 @@ Pedagogically,
 - Working through [AM](https://www.taylorfrancis.com/books/mono/10.1201/9780429493638/introduction-commutative-algebra-michael-atiyah-macdonald) is kind of nice. Definitely need to pair this with other material to make sure I'm doing the right things.
 - Learning (what I call) the algebraic way of doing things, as opposed to starting from the definitions, is an exercise in and of itself. It can be incredibly opaque. Going to re-visit this when I finish the chapter exercises.
 
+---
 
 ## Important Resources:
 
