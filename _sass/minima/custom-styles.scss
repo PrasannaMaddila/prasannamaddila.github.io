@@ -58,3 +58,43 @@ $names: (
     }
    }
 }
+
+/* Container Table */
+.news-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+/* Date Column */
+.news-date {
+    width: 110px;
+    vertical-align: top;
+    padding: 1rem 0;
+    color: #888;
+    font-family: "Courier New", Courier, monospace; /* Technical vibe */
+    font-size: 0.85rem;
+}
+
+/* Content Column with Timeline Line */
+.news-content {
+    vertical-align: top;
+    padding: 1rem 0 1rem 1.5rem;
+    border-left: 1px solid #e0e0e0; /* The vertical timeline line */
+    line-height: 1.5;
+}
+
+/* Bold Tags */
+.news-tag {
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 8px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .news-date { width: 80px; font-size: 0.75rem; }
+    .news-content { padding-left: 1rem; }
+}

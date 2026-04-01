@@ -1,0 +1,9 @@
+- sort_date: 2025-12-22
+  display_date: "Dec 2025"
+  tag: "[Paper](https://hal.science/view/index/docid/5450199), [AAMAS'26](https://cyprusconferences.org/aamas2026/)"
+  content: "Our paper on Multi-Adversarial Team Games has been accepted to [AAMAS 2026](https://cyprusconferences.org/aamas2026/) ! See all of you in Cyprus this May !"
+
+- sort_date: 2025-02-07
+  display_date: "Feb 2025"
+  tag: "Poster, [WRL@Mannheim](https://www.wim.uni-mannheim.de/doering/conferences/rl-2025/)"
+  content: "Presented a poster and attended the Workshop on Reinforcement Learning at Mannheim on our MATG work."

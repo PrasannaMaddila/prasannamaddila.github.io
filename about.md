@@ -3,9 +3,7 @@ layout: page
 title: "About Me"
 ---
 
-<img src="images/ProfilePicBeach.jpg"
-     alt="Prasanna Maddila" 
-     style="float: right; width: 200px; margin-left: 20px; border-radius: 8px;">
+[Link to CV](assets/pdf/resume.pdf) (_Last updated: 1 April, 2026_).
 
 I'm Prasanna, a doctoral student at the [University of Toulouse](https://www.univ-tlse3.fr) at the [MIAT](https://miat.inrae.fr) Lab, INRAE. Before that, I was an engineering student at [CentraleSupélec](https://www.centralesupelec.fr/en/), Paris, where I studied Computer Science (Sciences du Logiciel).
 
