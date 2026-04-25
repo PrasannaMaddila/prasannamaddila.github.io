@@ -9,7 +9,12 @@ title: "About Me"
 
 [Link to CV](assets/pdf/resume.pdf) (_Last updated: 1 April, 2026_).
 
-<p align="justify" markdown="1"> I'm currently a PhD candidate at the [University of Toulouse](https://www.univ-tlse3.fr) at the [MIAT](https://miat.inrae.fr) Lab, INRAE. Before that, I was an engineering student at [CentraleSupélec](https://www.centralesupelec.fr/en/), Paris, where I studied Computer Science (Sciences du Logiciel).
+<p align="justify" markdown="1"> 
+I'm currently a PhD candidate at the [University of Toulouse](https://www.univ-tlse3.fr) at the [MIAT](https://miat.inrae.fr) Lab, INRAE. I'm supervised by [Régis Sabbadin](https://miat.inrae.fr/member/sabbadinregis/) and [Meritxell Vinyals](https://sites.google.com/site/meritxellvinyals/).
+</p>
+
+<p align="justify" markdown="1"> 
+Before that, I was an engineering student at [CentraleSupélec](https://www.centralesupelec.fr/en/), Paris, where I studied Computer Science (Sciences du Logiciel).
 </p>
 
 <p align="justify" markdown="1">
