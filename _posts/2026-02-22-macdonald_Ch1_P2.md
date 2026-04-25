@@ -4,7 +4,7 @@ title: "[Comm.Alg] Exercise on Polynomial Rings"
 categories: math
 ---
 
-I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. If you need a quick [Primer on Rings]({% link 2023-12-25-primer-on-rings.md %}), I've got a terse post for you.
+I'm just dropping off for a small exercise in Atiyah and Macdonald's book on Commutative Algebra. If you need a quick [Primer on Rings]({% post_url 2023-12-25-primer-on-rings %}), I've got a terse post for you.
 
 ### Summary 
 
