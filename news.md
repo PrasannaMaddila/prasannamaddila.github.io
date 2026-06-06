@@ -9,11 +9,16 @@ I try to organise personal news by theme so it's easier to walk through. Better 
 
 Papers from my PhD work - this is mostly around Algorithmic Game Theory (Nash Equilibrium Computatation) and MARL for the moment.
 
-### Multi-Adversarial Team Games 
+### Multi-Adversarial Team Games
 
-Multi-Adversarial Team Games model the team vs. independent adversary dynamic that is central to APE. They also generalise the class of Adversarial Team Games, classically considered in Game Theory. We model this first as a normal form game, where we show that equilibria in this game are poly-time approximable. 
+Multi-Adversarial Team Games model the team vs. independent adversary dynamic that is central to APE. They also generalise the class of Adversarial Team Games, classically considered in Game Theory. 
 
-[Code: MATG](https://forge.inrae.fr/chip-gt/multi-adversarial-team-games) The algorithm is provided as a JAX-native, GPU-compatible implementation. 
+- We model this first as a normal form game, where we show that equilibria in this game are poly-time approximable. [Code: MATG](https://forge.inrae.fr/chip-gt/multi-adversarial-team-games) 
+- We then consider the Markov extension of this game, and identify the tractability boundary (PPAD-Hardness vs. existence of FPTAS). For the tractable class (additive transition dynamics), we provide an implementation that scales well. [Code: FHAT-MATMG](https://forge.inrae.fr/chip-gt/fhat_matmg)
+
+<div class="remark" text="Code">
+All provided code is JAX-native, GPU-compatible and is tested for correctness (PyTest). Do contact me if you have any bugs, bug-fixes, suggestions, improvements, changes you'd like to see, or any new use-cases you want to try this code out on! 
+</div>
 
 <table class="news-table">
   <tbody>

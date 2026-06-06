@@ -1,3 +1,8 @@
+- sort_date: 2026-06-01
+  display_date: "June 2026"
+  tag: "[Paper](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHd1cjh2eGxpN28wd250MnBucG5ibmFlZWl1dGZyYXhjNDQ5bnI4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26n6WywJyh39n1pBu/giphy.gif), [UAI'26](https://www.auai.org/uai2026/)"
+  content: "Our paper on Multi-Adversarial Team _Markov_ Games has been accepted to [UAI 2026](https://www.auai.org/uai2026/)! I'll see all of you in Amsterdam this August :)"
+
 - sort_date: 2025-12-22
   display_date: "Dec 2025"
   tag: "[Paper](https://hal.science/view/index/docid/5450199), [AAMAS'26](https://cyprusconferences.org/aamas2026/)"
