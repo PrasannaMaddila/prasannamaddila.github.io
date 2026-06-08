@@ -7,7 +7,7 @@ title: "About Me"
      alt="Prasanna Maddila" 
      style="float: right; width: 300px; margin-left: 30px">
 
-[Link to CV](assets/pdf/resume.pdf) (Last updated: 30 May, 2026).
+[Link to CV](assets/pdf/resume.pdf) (Last updated: 09 June, 2026).
 
 <p align="justify" markdown="1"> 
 I'm currently a PhD candidate at the [University of Toulouse](https://www.univ-tlse3.fr) at the [MIAT](https://miat.inrae.fr) Lab, INRAE. I'm supervised by [Régis Sabbadin](https://miat.inrae.fr/member/sabbadinregis/) and [Meritxell Vinyals](https://sites.google.com/site/meritxellvinyals/).
