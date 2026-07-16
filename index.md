@@ -17,7 +17,7 @@ Here's a quick overview of my latest posts. Click on the header to see the whole
   <tbody>
     {% for post in site.posts limit:4 %}
       <tr>
-        <td style="border: none; padding: 8px 0; text-align: center; color: #888; font-size: 0.9em;">
+        <td style="border: none; padding: 8px 1px; text-align: center; color: #888; font-size: 0.9em;">
           {{ post.date | date: "%b %d, %Y" }}
         </td>
         <td style="border: none; padding: 8px 0;">
