@@ -1,32 +1,13 @@
 ---
 layout: default
-title: "Prasanna's Blog"
+title: "Prasanna Maddila"
 ---
 
-Hello ! Welcome to my blog. This is for all things code and math that I find interesting - interesting enough that I take out the time to write a little bit about it, which helps me remember it.
+Hello ! I am Prasanna Maddila, a PhD student at the [University of Toulouse](https://www.univ-tlse3.fr), at the [MIAT](https://miat.inrae.fr) Lab, INRAE. I'm supervised by [Régis Sabbadin](https://miat.inrae.fr/member/sabbadinregis/) and [Meritxell Vinyals](https://sites.google.com/site/meritxellvinyals/). Before that, I was an engineering student at [CentraleSupélec](https://www.centralesupelec.fr/en/), Paris, where I studied Computer Science (Sciences du Logiciel).
 
-# [News](./news.md)
+In my PhD work, I study Nash Equilibrium computation in multi-agent games, either by exact methods (such as approximation schemes), or by Multi-Agent Reinforcement Learning techniques.
 
-There's also a list of personal news, but this list is updated asynchronously. Peruse at your own risk, fellow traveller !
-
-# [Posts](./posts.md)
-
-Here's a quick overview of my latest posts. Click on the header to see the whole list.
-
-<table class="news-table">
-  <tbody>
-    {% for post in site.posts limit:4 %}
-      <tr>
-        <td style="border: none; padding: 8px 1px; text-align: center; color: #888; font-size: 0.9em;">
-          {{ post.date | date: "%b %d, %Y" }}
-        </td>
-        <td style="border: none; padding: 8px 0;">
-          <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
-        </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+[LinkedIn](https://www.linkedin.com/in/prasanna-maddila/) / [GitHub](https://github.com/PrasannaMaddila) / [ORCID](https://orcid.org/0000-0003-0049-1746) / [Lab Page](https://miat.inrae.fr/member/maddilaprasanna/) / [CV](assets/pdf/resume.pdf) (Last updated: 12 July, 2026).
 
 ## Contributing and Issues
 
