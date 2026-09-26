@@ -3,11 +3,11 @@ layout: page
 title: "Posts"
 ---
 
-Here's the complete list of posts on this site.
+Here's the complete list of posts on this site. These are on things I personally find interesting, ranging from different topics in Math and CS. So, I try to write them down before I forget. 
 
 # Math
 
-These posts are mostly on math I find interesting. You can definitely expect some algebra in there, but other curiosities might find their way here.
+These posts are on math I find interesting. You can definitely expect some algebra in there, but other curiosities might find their way here.
 
 <table class="news-table">
   <tbody>

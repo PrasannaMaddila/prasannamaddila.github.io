@@ -2,7 +2,7 @@
 title: Between Code and Math
 author:
   name: Prasanna Maddila
-description: "Personal blog on things I find interesting about code and math."
+description: "The site of Prasanna Maddila."
 url: https://prasanna.maddila.cc
 
 # Build settings
@@ -18,6 +18,5 @@ minima:
 markdown: kramdown
 
 header_pages:
-    - about.md
     - news.md
     - posts.md
