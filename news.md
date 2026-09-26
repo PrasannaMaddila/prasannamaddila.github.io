@@ -77,3 +77,24 @@ In addition to my PhD work, I also teach at the University of Toulouse. This is 
     {% endfor %}
   </tbody>
 </table>
+
+
+## Talks and Other
+
+Here's a list of talks and other things I've been up to.
+
+<table class="news-table">
+  <tbody>
+    {% for item in site.data.talks %}
+      <tr>
+        <td>
+            <span class="news-date">{{ item.display_date | markdownify }}</span>
+            <span class="news-tag">{{ item.tag | markdownify }}</span>
+        </td>
+        <td class="news-content">
+          {{ item.content | markdownify | remove: '<p>' | remove: '</p>' }}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
