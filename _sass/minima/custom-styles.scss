@@ -2,6 +2,10 @@
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
 // base environment to define the style of a math env. This italicises 
 // all text, draws a box around the environment, and defines the list styles.
+body{
+  text-align: justify;
+}
+
 .base-env {
   // generic properties 
   display: block;
