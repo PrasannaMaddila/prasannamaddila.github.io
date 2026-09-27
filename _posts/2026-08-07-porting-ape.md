@@ -17,7 +17,7 @@ In this post, we're just looking at the motivation to do this and the factors th
 
 # Why would I do this?
 
-So, why would I ever want to do this? The original environmnet is a perfectly functional PettingZoo environment, with integrated RL benches. It has a lot of configurability too; this was achieved via many parameters to change the game settings, many fixed policies and scenarios to train against. It's quite good, in all fairness.
+So, why would I ever want to do this? The original environment is a perfectly functional PettingZoo environment, with integrated RL benches. It has a lot of configurability too; this was achieved via many parameters to change the game settings, many fixed policies and scenarios to train against. It's quite good, in all fairness.
 
 But, despite all this, I had my reasons: it's difficult to extend/change its core logic as it is currently. I was a horrible programmer back in the day (this has not significantly changed since), and I interleaved reward generation, observations, and the actual dynamics of the game into one big mess. Case-in-point: I wanted to change a particular feature, and ended up looking at a huge list of potential changes I'd have to make. This amounted to rewriting large parts of the environment, so I decided to cut my losses and start over.
 
@@ -28,14 +28,14 @@ This is where the TorchRL rewrite decision crept in, for the following (targeted
 
 - *Extensibility*: Adding new observation and reward models should be easier; this is more of a code sanity thing, but quite important for me.
 - *Performance* (_to verify_): Since I plan on running my future MARL experiments with the [BenchMARL](https://benchmarl.readthedocs.io/en/latest/) suite anyway, the hope is that I can fit both environment and algorithm onto the GPU to get massive speed gains.
-- *Reproducibility*: TorchRL environments can be seeded to ensure JAX-like perfect reproducibility. While APE is reproducible, I'm doing some horrible things to make it so, and would prefer a much cleaner (almost JAX-like) way to handle things.
+- *Reproducibility*: TorchRL environments can be seeded to ensure JAX-like perfect reproducibility. While the environment is reproducible, I'm doing some horrible things to make it so, and would prefer a much cleaner (almost JAX-like) way to handle things.
 
 ### The Downsides
 
 However, as anyone in machine learning will tell you, there is no free lunch. This comes with a couple of huge disadvantages that I had to weigh in:
 
 - *Reimplementation cost*: I will end up rewriting the environment, provide new tests, documentation and have to suitably extend the MARL suite. This is not trivial, not by a long shot.
-- *Maintainability*: This hasn't really changed from the PettingZoo days. In fact, it might be worse, since writing everything in tensor operations might make the code even more opaque, so downstream users looking to extend APE's dynamics will have a hard time.
+- *Maintainability*: This hasn't really changed from the PettingZoo days. In fact, it might be worse, since writing everything in tensor operations might make the code even more opaque, so downstream users looking to extend its dynamics will have a hard time.
 
 ### The Decision
 
@@ -85,7 +85,7 @@ class Env(EnvBase):
 
 ```
 
-The `__init__` method, as usual, handles the initialisation of the environment. This is mostly setting the right parameters to properly initialise the environment before use; here, these configuration parameters are passed via the `td_params` TensorDict. If such a `td_params` dictionary isn't passed, the `gen_params` method is charged with sensible defaults for the environment (more on this in a minute).
+The `__init__` method, as usual, handles the initialisation of the environment. This is mostly setting the right parameters to properly initialise the environment before use; here, these configuration parameters are passed via `td_params:  TensorDict`. If such a `td_params` dictionary isn't passed, the `gen_params` method is charged with sensible defaults for the environment (more on this in a minute).
 
 ## Making Environment Specs
 
@@ -296,8 +296,8 @@ def test_check_env(batch_size: int | tuple[int], seed: int):
     Calls check_env_specs on environment with/without batching.
     This is a preliminary check to ensure that the environment runs.
     """
-    params = APE_v1.gen_params()
-    env = APE_v1(td_params=params, batch_size=batch_size)
+    params = Env.gen_params()
+    env = Env(td_params=params, batch_size=batch_size)
     check_env_specs(env, seed=seed)
 ```
 
@@ -314,7 +314,7 @@ I pass an `is_strict: bool` flag to the environment, which is False by default. 
 @pytest.mark.parametrize("batch_size", BATCH_SIZES_TO_TEST)
 def test_agent_state_sync1(batch_size: int | tuple[int]):
 
-    params = APE_v1.gen_params()
+    params = Env.gen_params()
     env = Env(td_params=params, batch_size=batch_size, is_strict=True)
     td = env.reset()
 
