@@ -5,6 +5,14 @@ author:
 description: "The site of Prasanna Maddila."
 url: https://prasanna.maddila.cc
 
+# generic settings
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+
 # Build settings
 remote_theme: jekyll/minima@3cdd14d
 plugins:
@@ -16,7 +24,11 @@ minima:
 
 # Build settings
 markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
 
 header_pages:
     - news.md
     - posts.md
+
