@@ -30,5 +30,5 @@ kramdown:
 
 header_pages:
     - news.md
-    - posts.md
+    - blog.md
 

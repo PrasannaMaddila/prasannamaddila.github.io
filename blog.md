@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Posts"
+title: "Blog"
 ---
 
 Here's the complete list of posts on this site. These are on things I personally find interesting, ranging from different topics in Math and CS. So, I try to write them down before I forget. 
