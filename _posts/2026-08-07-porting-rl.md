@@ -20,9 +20,9 @@ This will be a long(ish) post, so feel free to come back to it over multiple pas
 ##### Table of Contents
 
 - [Why would I do this?](#why-would-i-do-this)
-      + [The Upsides](#the-upsides)
-      + [The Downsides](#the-downsides)
-      + [The Decision](#the-decision)
+   + [The Upsides](#the-upsides)
+   + [The Downsides](#the-downsides)
+   + [The Decision](#the-decision)
 - [The Plan™️](#the-plan)
 - [Part 1: Spec Definitions and Architecture](#part-1-spec-definitions-and-architecture)
    * [Making Environment Specs](#making-environment-specs)
@@ -32,8 +32,8 @@ This will be a long(ish) post, so feel free to come back to it over multiple pas
 - [Part 3: Step Execution Engine](#part-3-step-execution-engine)
 - [Part 4: Verification and Testing](#part-4-verification-and-testing)
 - [Bonus: Unexpected Gotchas](#bonus-unexpected-gotchas)
-      + [Manual Batch Handling](#manual-batch-handling)
-      + [The God Object Problem](#the-god-object-problem)
+   + [Manual Batch Handling](#manual-batch-handling)
+   + [The God Object Problem](#the-god-object-problem)
 - [Conclusions](#conclusions)
 
 # Why would I do this?
