@@ -12,8 +12,29 @@ Before we start, here's some helpful resources that were quite invaluable throug
 - [TorchRL: Competitive Multi-Agent Reinforcement Learning (DDPG) with TorchRL Tutorial](https://docs.pytorch.org/rl/stable/tutorials/multiagent_competitive_ddpg.html)
 - [Yoann Poupart's Blog: MARL Cluster Training](https://yp-edu.github.io/projects/marl-cluster-training)
 
-In this post, we're just looking at the motivation to do this and the factors that weigh in (at least, in my head), when doing such a refactor.
+In this post, we'll first look at the motivation to do this and the factors that weigh in (at least, in my head), when doing such a refactor. After that, we'll move into the technicalities of the port itself. We'll end on some gotchas that caught me off guard.
 
+This will be a long(ish) post, so feel free to come back to it over multiple passes, or skip ahead to the part you like.
+
+
+##### Table of Contents
+
+- [Why would I do this?](#why-would-i-do-this)
+      + [The Upsides](#the-upsides)
+      + [The Downsides](#the-downsides)
+      + [The Decision](#the-decision)
+- [The Plan™️](#the-plan)
+- [Part 1: Spec Definitions and Architecture](#part-1-spec-definitions-and-architecture)
+   * [Making Environment Specs](#making-environment-specs)
+   * [Environment Configuration via `gen_params`](#environment-configuration-via-gen_params)
+      + [Interlude: What is the Environment State?](#interlude-what-is-the-environment-state)
+- [Part 2: Environment Reset](#part-2-environment-reset)
+- [Part 3: Step Execution Engine](#part-3-step-execution-engine)
+- [Part 4: Verification and Testing](#part-4-verification-and-testing)
+- [Bonus: Unexpected Gotchas](#bonus-unexpected-gotchas)
+      + [Manual Batch Handling](#manual-batch-handling)
+      + [The God Object Problem](#the-god-object-problem)
+- [Conclusions](#conclusions)
 
 # Why would I do this?
 
