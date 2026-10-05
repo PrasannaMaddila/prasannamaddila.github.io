@@ -16,8 +16,9 @@ In this post, we'll first look at the motivation to do this and the factors that
 
 This will be a long(ish) post, so feel free to come back to it over multiple passes, or skip ahead to the part you like.
 
+---
 
-##### Table of Contents
+#### Table of Contents
 
 - [Why would I do this?](#why-would-i-do-this)
    + [The Upsides](#the-upsides)
@@ -36,6 +37,7 @@ This will be a long(ish) post, so feel free to come back to it over multiple pas
    + [The God Object Problem](#the-god-object-problem)
 - [Conclusions](#conclusions)
 
+---
 # Why would I do this?
 
 So, why would I ever want to do this? The original environment is a perfectly functional PettingZoo environment, with integrated RL benches. It has a lot of configurability too; this was achieved via many parameters to change the game settings, many fixed policies and scenarios to train against. It's quite good, in all fairness.
@@ -354,7 +356,7 @@ Well, on a high note, we're done! I'll just take the time to mention a couple of
 
 ### Manual Batch Handling
 
-Unlike JAX, TorchRL does not automatically handle batching for us. Instead, it falls onto us to incorporate the batching dimension into each of our calculations. This is a problem, since our matrices could have dimensions `[#R, #P, #Objects, 3]` or `[batch_size, #R, #P, #Objects, 3]`, depending on if the user calls it in batched more (i.e., MARL experiments), or not.
+Unlike JAX, TorchRL does not automatically handle batching for us. Instead, it falls onto us to incorporate the batching dimension into each of our calculations. This is a problem, since our matrices could have dimensions `[#N, #Objects, 3]` or `[batch_size, #N, #Objects, 3]`, depending on if the user calls it in batched mode (i.e., MARL experiments), or not.
 
 We also need to distinguish Parallel environments and Batched environments (Vectorisation). As detailed [here](https://docs.pytorch.org/rl/stable/tutorials/torchrl_envs.html#running-environments-in-parallel), Parallel environments are process-level parallelism i.e., each environment is executed on a separate Python process. On the other hand, Batched environments group multiple environments within the same process ([See EnvBase.batch_size](https://docs.pytorch.org/rl/stable/reference/generated/torchrl.envs.EnvBase.html#envbase), or [Brax](https://docs.pytorch.org/rl/stable/reference/generated/torchrl.envs.BraxEnv.html#torchrl.envs.BraxEnv)). This is also called Vectorisation, and is the more familiar thing for JAX-heavy folk like me.
 
