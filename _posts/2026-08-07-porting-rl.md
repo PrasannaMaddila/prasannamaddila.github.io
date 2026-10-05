@@ -178,7 +178,7 @@ self.grid.state : dict = {
     "obj_1_agent_1: np.array([x_tp1, y_tp1]),
 }
 ```
-where `"object_1_agent_1" : Trap` is actually a Python dataclass containing the `name` and `value` fields. Looking back on this, I owe a public apology to anyone who had to see this code. 
+where `"object_1_agent_1" : Object` is actually a Python dataclass containing the `name` and `value` fields. Looking back on this, I owe a public apology to anyone who had to see this code. 
 
 My time with JAX has cleansed my spirit, however. In particular, I realised that if I want speed, I need to throw away everything superfluous in this representation. For example, instead of using dictionaries, I can use three `torch.Tensor`s to represent the grid state as a `TensorClass` (See [TensorClass](https://docs.pytorch.org/td/main/reference/tc.html)).
 
@@ -275,7 +275,7 @@ The real problem is that each of these little steps was defined as Pythonic for-
 ```python
 # Global constant
 ACTION_DELTAS: torch.Tensor = torch.Tensor(
-    [  # No-Op, Up,      Left,   Down,   Right,   PlaceTrap
+    [  # No-Op, Up,      Left,   Down,   Right,   PlaceObject
         [0, 0], [0, -1], [1, 0], [0, 1], [-1, 0], [0, 0],
     ]
 )
@@ -354,7 +354,7 @@ Well, on a high note, we're done! I'll just take the time to mention a couple of
 
 ### Manual Batch Handling
 
-Unlike JAX, TorchRL does not automatically handle batching for us. Instead, it falls onto us to incorporate the batching dimension into each of our calculations. This is a problem, since our matrices could have dimensions `[#R, #P, #Traps, 3]` or `[batch_size, #R, #P, #Traps, 3]`, depending on if the user calls it in batched more (i.e., MARL experiments), or not.
+Unlike JAX, TorchRL does not automatically handle batching for us. Instead, it falls onto us to incorporate the batching dimension into each of our calculations. This is a problem, since our matrices could have dimensions `[#R, #P, #Objects, 3]` or `[batch_size, #R, #P, #Objects, 3]`, depending on if the user calls it in batched more (i.e., MARL experiments), or not.
 
 We also need to distinguish Parallel environments and Batched environments (Vectorisation). As detailed [here](https://docs.pytorch.org/rl/stable/tutorials/torchrl_envs.html#running-environments-in-parallel), Parallel environments are process-level parallelism i.e., each environment is executed on a separate Python process. On the other hand, Batched environments group multiple environments within the same process ([See EnvBase.batch_size](https://docs.pytorch.org/rl/stable/reference/generated/torchrl.envs.EnvBase.html#envbase), or [Brax](https://docs.pytorch.org/rl/stable/reference/generated/torchrl.envs.BraxEnv.html#torchrl.envs.BraxEnv)). This is also called Vectorisation, and is the more familiar thing for JAX-heavy folk like me.
 
