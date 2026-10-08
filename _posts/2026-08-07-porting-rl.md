@@ -167,7 +167,7 @@ if __name__ == "__main__":
 
 This will reset the environment (i.e., call `reset`), and run an episode (i.e., call `step` until episode termination). It also checks that the specs defined earlier in `_make_spec` are being respected during each step. Since it throws an error if they aren't, this is a good sanity check to keep while coding up something this complex.
 
-### Interlude: What is the Environment State?
+## Interlude: What is the Environment State?
 
 When implementing the `reset` method, I was forced to make architectural choices. Here, the environment state needs to be reset to some default. The natural question is: how is the environment state represented?
 
