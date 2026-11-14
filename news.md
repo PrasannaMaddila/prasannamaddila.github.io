@@ -10,7 +10,7 @@ I try to organise personal news by theme so it's easier to walk through. Better 
 I'm grouping my work based on the themes they fall into.
 
 <div class="remark" markdown="1" text="Update">
-I've defended my PhD thesis on 19th October [(theses.fr)](https://theses.fr/s377714)! I'll try to upload the final document in some time, but if you need a copy, contact me!
+I've defended my PhD thesis on 19th October, 2026 [(theses.fr)](https://theses.fr/s377714)! I'll try to upload the final document in some time, but if you need a copy, contact me!
 </div>
 
 ### Multi-Adversarial Team Games
