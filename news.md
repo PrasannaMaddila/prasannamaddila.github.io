@@ -7,11 +7,15 @@ I try to organise personal news by theme so it's easier to walk through. Better 
 
 ## Papers and Publications
 
-Papers from my PhD work - this is mostly around Algorithmic Game Theory (Nash Equilibrium Computatation) and MARL for the moment.
+I'm grouping my work based on the themes they fall into.
+
+<div class="remark" text="Update">
+I've defended my PhD thesis on 19th October [(theses.fr)](https://theses.fr/s377714)! I'll try to upload the final document in some time, but if you need a copy, contact me!
+</div>
 
 ### Multi-Adversarial Team Games
 
-Multi-Adversarial Team Games model the team vs. independent adversary dynamic that is central to APE. They also generalise the class of Adversarial Team Games, classically considered in Game Theory. 
+This was the focus of my PhD work; this is mostly around Algorithmic Game Theory (Nash Equilibrium Computatation) and MARL. Multi-Adversarial Team Games model the team vs. independent adversary dynamic that is central to APE. They also generalise the class of Adversarial Team Games, classically considered in Game Theory. 
 
 - We model this first as a normal form game, where we show that equilibria in this game are poly-time approximable. [Code: MATG](https://forge.inrae.fr/chip-gt/multi-adversarial-team-games) 
 - We then consider the Markov extension of this game, and identify the tractability boundary (PPAD-Hardness vs. existence of FPTAS). For the tractable class (additive transition dynamics), we provide an implementation that scales well. [Code: FHAT-MATMG](https://forge.inrae.fr/chip-gt/fhat_matmg)
